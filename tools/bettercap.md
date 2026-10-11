@@ -6,7 +6,7 @@ Bettercap supports network discovery and traffic analysis. Certain modules can i
 ```bash
 bettercap -version
 bettercap -h
-``
+```
 Command options vary by release and platform. Work from a disposable lab VM and isolated virtual network.
 
 ## 2. Select the lab interface
@@ -14,7 +14,7 @@ Command options vary by release and platform. Work from a disposable lab VM and 
 ip addr
 ip route
 sudo bettercap -iface <INTERFACE>
-``
+```
 Inside the Bettercap interactive session:
 ```text
 help
@@ -24,7 +24,7 @@ net.probe on
 net.show
 net.probe off
 quit
-``
+```
 `net.probe` sends discovery traffic; use it only on the lab network. Keep discovery short and disable it when done.
 
 ## 3. Understand the result
@@ -36,7 +36,7 @@ help
 help net.recon
 help net.sniff
 help arp.spoof
-``
+```
 Help output can explain a module's purpose without enabling it. Do not enable spoofing/interception features on your everyday LAN. Where a lab specifically requires an MITM demonstration, follow the official lab steps in the isolated virtual topology only.
 
 ## 5. Practical defensive use

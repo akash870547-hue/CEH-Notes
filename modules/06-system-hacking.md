@@ -48,7 +48,18 @@ Paths, event retention and access vary by OS. Correlate event time, account, sou
 - Stored password verifiers should use a dedicated salted password-hashing algorithm and suitable work factor.
 - For approved offline sample hashes, use the [credential audit guide](../tools/credential-auditing.md); do not guess passwords against a live service unless a separately authorized lab explicitly requires a tightly bounded test.
 
-## 5. System-hacking process concepts
+## 5. Steganography and steganalysis basics
+Steganography conceals data inside a carrier file; steganalysis looks for evidence of concealed content. In the lab, hash and identify the sample first, then use the format-appropriate inspection tool. Treat any recovered artifact as untrusted data and never execute it.
+```bash
+file <LAB_FILE>
+sha256sum <LAB_FILE>
+exiftool <LAB_FILE>
+strings -n 6 <LAB_FILE> | head -n 80
+steghide info <LAB_STEG_FILE>
+```
+Not every format is supported by Steghide, and no finding does not prove no hidden data exists. Read the [steganography tool guide](../tools/steganography.md) before extraction.
+
+## 6. System-hacking process concepts
 The module may cover password attacks, privilege escalation concepts, persistence and log/evidence impact. For the practical, prioritize evidence-based configuration review and the specific objective. Do not install persistence, disable security controls, or modify startup/registry/cron tasks unless a purpose-built lab explicitly instructs a reversible simulation.
 
 ## 6. Evidence and interpretation
@@ -68,4 +79,4 @@ Use a designated low-privilege account. Compare `whoami /all` or `id` with acces
 4. Why should logs remain untouched during the test?
 5. What is the safe handling rule for hashes and credentials?
 
-**Related:** [System and password audit](../tools/system-and-password-audit.md) · [Credential auditing](../tools/credential-auditing.md) · [Log analysis](../tools/log-analysis.md)
+**Related:** [System and password audit](../tools/system-and-password-audit.md) · [Credential auditing](../tools/credential-auditing.md) · [Steganography](../tools/steganography.md) · [Log analysis](../tools/log-analysis.md)

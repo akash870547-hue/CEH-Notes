@@ -8,14 +8,14 @@ nc -h
 ncat --help
 which nc
 nc -h 2>&1 | head -n 30
-``
+```
 
 ## 2. Basic reachability / TCP connect
 ```bash
 nc -vz -w 3 <LAB_IP> 22
 nc -vz -w 3 <LAB_IP> 80 443
 ncat -vz --connect-timeout 3 <LAB_IP> 443
-``
+```
 - `-v`: verbose.
 - `-z`: scan/check without sending application data, where supported.
 - `-w`/connect-timeout: bound the wait.
@@ -24,14 +24,14 @@ Multiple ports syntax varies by implementation; when uncertain, test one port at
 ## 3. Read a service banner (where the service sends one)
 ```bash
 printf 'HEAD / HTTP/1.0\r\nHost: <LAB_DOMAIN>\r\n\r\n' | nc -w 3 <LAB_IP> 80
-``
+```
 Plain HTTP only; HTTPS requires TLS, for which use `openssl s_client` or `curl -v`. Some servers do not send banners until they receive a valid request.
 
 ## 4. Ncat with TLS information
 ```bash
 ncat --help
 ncat --ssl <LAB_DOMAIN> 443
-``
+```
 Use only for basic interaction with a lab TLS service; for certificate validation details, OpenSSL is more informative.
 
 ## 5. Lab file transfer caution

@@ -53,4 +53,4 @@ Dissector availability and filters depend on version/traffic. Review broker/topi
 ## Lab drill
 Review a supplied IoT scan or firmware sample. Identify an exposed surface, evidence, one safety limitation and at least three mitigations.
 
-**Related:** [Nmap](../tools/nmap.md) · [Packet analysis](../tools/packet-analysis.md) · [OpenSSL/hashes](../tools/crypto-openssl.md)
+**Related:** [Nmap](../tools/nmap.md) · [Protocol enumeration](../tools/protocol-enumeration.md) · [Packet analysis](../tools/packet-analysis.md) · [OpenSSL/hashes](../tools/crypto-openssl.md)

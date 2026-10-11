@@ -56,4 +56,4 @@ Least-privilege roles, MFA for privileged users, temporary credentials, private-
 ## Lab drill
 Using the training account, verify identity, inspect a storage/network/IAM setting and write exact evidence plus a least-privilege correction.
 
-**Related:** [Cloud CLI & Grype](../tools/cloud-and-grype.md) · [Vulnerability analysis](05-vulnerability-analysis.md) · [Crypto/TLS](../tools/crypto-openssl.md)
+**Related:** [Cloud CLI, Docker, Grype, Trivy and Kubernetes](../tools/cloud-and-grype.md) · [Vulnerability analysis](05-vulnerability-analysis.md) · [Crypto/TLS](../tools/crypto-openssl.md)

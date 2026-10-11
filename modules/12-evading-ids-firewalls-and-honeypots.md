@@ -64,4 +64,4 @@ Possible clues include an unexpected decoy banner, unusually instrumented servic
 4. Why is "no alert" not proof a system is secure?
 5. Why test a copied rule/config and keep rollback steps?
 
-**Related:** [Packet analysis](../tools/packet-analysis.md) · [Log analysis](../tools/log-analysis.md) · [Practical workflow](../EXAM-WORKFLOW.md)
+**Related:** [Firewall/IDS/IPS tools](../tools/firewall-ids.md) · [Packet analysis](../tools/packet-analysis.md) · [Log analysis](../tools/log-analysis.md) · [Practical workflow](../EXAM-WORKFLOW.md)

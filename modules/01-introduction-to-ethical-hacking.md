@@ -1,46 +1,65 @@
-# Module 01: Introduction to Ethical Hacking
+# Module 01 — Introduction to Ethical Hacking
 
-## Exam focus
-Scope, written authorization, rules of engagement, evidence handling, five phases, and how CEH Engage differs from a single-tool exercise.
+## Exam objective
+Start every practical by proving that you understand **scope, permission, task output and stop conditions**. A technically correct command run against the wrong target is still a failed/unsafe test.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Core terminology
+- **Asset / target:** host, subnet, application, account, cloud resource or file being assessed.
+- **Scope:** explicitly allowed assets, paths, protocols, time window and test methods.
+- **Rules of engagement (RoE):** approved intensity, contacts, prohibited techniques, data handling and stop conditions.
+- **Finding:** a reproducible observation that supports a security claim.
+- **Evidence:** command output, request/response, screenshot, log or hash that another reviewer can verify.
+- **False positive:** the tool reports a weakness that does not apply or cannot be demonstrated in this context.
+- **False negative:** a weakness exists but the test did not identify it.
 
-## Lab drill
-**Exercise:** Create a scope sheet for a fictional lab; identify in-scope IPs, prohibited actions, test window, evidence and stop conditions.
+## 2. Before the first command
+Use the lab sheet as the source of truth; do not reuse remembered IPs from another session.
 
-**Tool families to recognize:** scope, authorization, methodology, risk, evidence
+```bash
+date -Is
+whoami
+ip addr
+ip route
+nmap --version
+``
 
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
+Windows equivalents: `Get-Date`, `whoami /all`, `ipconfig /all`, `route print`. These commands establish local context; they do not authorize a test.
 
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
+Create a scope note:
+```text
+Objective:
+In-scope targets:
+Out-of-scope targets:
+Allowed tools / methods:
+Credentials supplied by lab:
+Test window / stop condition:
+Required answer format:
+Evidence location:
+```
 
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
+## 3. Repeatable practical method
+1. **Parse:** identify the exact requested value (e.g. service/version, record type, hash, alert or flag).
+2. **Scope:** confirm target and allowed action.
+3. **Baseline:** observe normal behavior first.
+4. **Test:** change one variable at a time and use the smallest relevant check.
+5. **Interpret:** quote the evidence and explain what it proves and does not prove.
+6. **Verify:** use a second signal if appropriate (tool + application response/log).
+7. **Submit and stop:** match case/format exactly; don't continue probing after success.
 
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
+## 4. Ethics, safety and evidence
+- Never scan, intercept, stress-test or exploit a third-party system without explicit authorization.
+- Use test accounts and synthetic data. Redact cookies, passwords, API keys and personal information.
+- Preserve original evidence; do not clear logs or alter timestamps.
+- Keep tool output, date/time, target, version and a concise interpretation.
 
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
+## 5. Lab drill
+Given a fictional target and a practical objective, create a scope card and decide which of these you can run: a local version check, a DNS lookup, a single-host scan, a web parameter test, a high-rate stress test. Explain why permission and scope differ for each.
 
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+## Quick self-test
+1. What's the difference between scope and objective?
+2. Why is an open port not itself a vulnerability?
+3. Give one example of evidence and one unsupported assumption.
+4. When should you stop testing?
+5. Why must credentials and session cookies be redacted?
+
+**Next:** [Exam workflow](../EXAM-WORKFLOW.md) · [Tool index](../tools/README.md) · [Revision checklist](../REVISION-CHECKLIST.md)

@@ -9,6 +9,7 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 - [Exam workflow](EXAM-WORKFLOW.md) — repeatable approach for scenario / flag-based objectives.
 - [Full tools & command cheat sheet](TOOLS-CHEATSHEET.md) — syntax patterns, output interpretation and troubleshooting.
 - [Last-day revision checklist](REVISION-CHECKLIST.md) — key concepts and self-test.
+- [Lab notes template + troubleshooting](LAB-NOTES-TEMPLATE.md) — record output/evidence and diagnose common issues.
 - [Phase 1: Recon → Scan → Enumeration](modules/PHASE-1-RECON-SCAN-ENUM.md) — Modules 02–05 as one workflow.
 - [Phase 3: Perimeter & Web Practicals](modules/PHASE-3-WEB-PERIMETER.md) — Modules 11–15 revision.
 

@@ -9,7 +9,7 @@ tshark --version
 tcpdump --version
 ip addr
 tcpdump -D
-``
+```
 
 ## 2. tcpdump basics
 ```bash
@@ -17,7 +17,7 @@ sudo tcpdump -i <INTERFACE> -nn -c 50
 sudo tcpdump -i <INTERFACE> -nn 'host <LAB_IP>' -c 100
 sudo tcpdump -i <INTERFACE> -nn 'port 53' -c 100
 sudo tcpdump -i <INTERFACE> -nn 'tcp port 80' -c 50
-``
+```
 - `-i`: interface.
 - `-n/-nn`: disable name/service resolution.
 - `-c`: stop after N packets.
@@ -27,7 +27,7 @@ Save to a pcap:
 ```bash
 sudo tcpdump -i <INTERFACE> -nn -c 200 -w lab-capture.pcap
 tcpdump -nn -r lab-capture.pcap
-``
+```
 
 ## 3. Wireshark display filters
 Common filters:
@@ -56,7 +56,7 @@ tshark -i <INTERFACE> -c 50
 tshark -r lab-capture.pcap
 tshark -r lab-capture.pcap -Y 'dns'
 tshark -r lab-capture.pcap -Y 'http.request' -T fields -e frame.time -e ip.src -e http.host -e http.request.uri
-``
+```
 Always verify field names with the installed version and `tshark -G fields` if a field is unknown.
 
 ## 5. Follow a conversation

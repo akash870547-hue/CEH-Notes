@@ -15,9 +15,9 @@ This matrix is a revision aid for the tools currently covered in this repository
 | 03 Scanning Networks | Nmap, arp-scan, Netdiscover, ping, traceroute/tracepath, hping3, ss/netstat | [Nmap](tools/nmap.md) · [Host discovery](tools/host-discovery.md) · [hping3](tools/hping3.md) |
 | 04 Enumeration | SMB/smbclient, enum4linux-ng, NetBIOS/nbtscan, SNMP, LDAP, RPC, DNS enum, NTP, SMTP, NFS, BGP, IKE/IPsec concepts | [Service enumeration](tools/network-enumeration.md) · [Protocol enumeration](tools/protocol-enumeration.md) |
 | 05 Vulnerability Analysis | Nessus, Greenbone/OpenVAS, Nuclei, Nmap NSE, SearchSploit, CVE/CVSS and evidence validation | [Vulnerability scanners](tools/vulnerability-scanners.md) · [Nuclei](tools/nuclei.md) · [SearchSploit](tools/searchsploit.md) |
-| 06 System Hacking | Linux/Windows identity and permissions, John/Hashcat/Hydra awareness, logs, steganography, safe payload-tool orientation | [System & password audit](tools/system-and-password-audit.md) · [Credential audit](tools/credential-auditing.md) · [Steganography](tools/steganography.md) · [Msfvenom reference](tools/msfvenom-reference.md) |
-| 07 Malware Threats | file, SHA-256, strings, ExifTool, YARA, Sysinternals Process Explorer/Procmon/Autoruns, PEStudio and safe sandbox principles | [Malware analysis](tools/malware-analysis.md) |
-| 08 Sniffing | Wireshark, tcpdump, tshark, ARP/DNS/TCP/TLS and pcap analysis | [Packet analysis](tools/packet-analysis.md) |
+| 06 System Hacking | Linux/Windows identity and permissions, John/Hashcat/Hydra awareness, logs, steganography, safe payload-tool orientation | [System & password audit](tools/system-and-password-audit.md) · [Credential audit](tools/credential-auditing.md) · [Hashid and additional audit tools](tools/extra-practical-tools.md) · [Steganography](tools/steganography.md) · [Msfvenom reference](tools/msfvenom-reference.md) |
+| 07 Malware Threats | file, SHA-256, strings, ExifTool, YARA, Sysinternals Process Explorer/Procmon/Autoruns, PEStudio and safe sandbox principles | [Malware analysis](tools/malware-analysis.md) · [DiE/Stegdetect/Steganography](tools/extra-practical-tools.md) |
+| 08 Sniffing | Wireshark, tcpdump, tshark, ARP/DNS/TCP/TLS and pcap analysis | [Packet analysis](tools/packet-analysis.md) · [tcpflow](tools/extra-practical-tools.md) |
 | 09 Social Engineering | SET tool orientation, email header inspection, SPF/DKIM/DMARC, benign consent-based awareness simulations | [Social engineering tools](tools/social-engineering-tools.md) |
 | 10 Denial-of-Service | hping3 low-count diagnostics, pcap analysis, resource counters, logs and defensive response; no flood commands | [hping3](tools/hping3.md) · [Packet analysis](tools/packet-analysis.md) · [Log analysis](tools/log-analysis.md) |
 | 11 Session Hijacking | Browser DevTools, Burp Suite, ZAP, curl, cookie/session lifecycle | [Burp/ZAP](tools/burp-zap.md) · [Web CLI tools](tools/web-cli-tools.md) |
@@ -26,10 +26,10 @@ This matrix is a revision aid for the tools currently covered in this repository
 | 14 Hacking Web Applications | Burp/ZAP, browser Network panel, curl, DIRB/Dirsearch/Wfuzz, WPScan, request comparison | [Burp/ZAP](tools/burp-zap.md) · [Web content discovery](tools/web-content-discovery.md) |
 | 15 SQL Injection | SQLmap, request capture, response/timing/error interpretation, parameterized-query remediation | [sqlmap](tools/sqlmap.md) |
 | 16 Wireless Networks | iw, nmcli, Aircrack-ng tool orientation, supplied wireless captures, Wireshark | [Wireless tools](tools/wireless-tools.md) |
-| 17 Mobile Platforms | ADB, apkanalyzer, JADX, MobSF; emulator and APK checks | [Mobile tools](tools/mobile-tools.md) |
+| 17 Mobile Platforms | ADB, apkanalyzer, JADX, MobSF; emulator and APK checks | [Mobile tools](tools/mobile-tools.md) · [SQLite3/Androguard](tools/extra-practical-tools.md) |
 | 18 IoT and OT Hacking | Nmap, MQTT/CoAP pcap filters, file/strings/Binwalk firmware triage | [IoT/OT module](modules/18-iot-hacking.md) · [Nmap](tools/nmap.md) |
 | 19 Cloud Computing | AWS CLI identity and read-only inventory, IAM/storage/network review, Docker, Grype | [Cloud & Grype](tools/cloud-and-grype.md) |
-| 20 Cryptography | sha256sum, OpenSSL, certificate/TLS checks, Base64 encoding, PKI/key-management concepts | [OpenSSL/crypto](tools/crypto-openssl.md) |
+| 20 Cryptography | sha256sum, OpenSSL, certificate/TLS checks, Base64 encoding, PKI/key-management concepts | [OpenSSL/crypto](tools/crypto-openssl.md) · [VeraCrypt](tools/extra-practical-tools.md) |
 
 ## Tool proficiency ladder
 

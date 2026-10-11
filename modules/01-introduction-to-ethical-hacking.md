@@ -21,7 +21,7 @@ whoami
 ip addr
 ip route
 nmap --version
-``
+```
 
 Windows equivalents: `Get-Date`, `whoami /all`, `ipconfig /all`, `route print`. These commands establish local context; they do not authorize a test.
 

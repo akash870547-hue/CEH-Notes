@@ -40,6 +40,7 @@ This library covers the common CLI and GUI tool families associated with the 20-
 ## System, password, malware and social engineering
 - [Linux/Windows system inspection, hashes and offline audit basics](system-and-password-audit.md)
 - [Credential auditing: Hydra in tightly scoped labs, John and Hashcat offline](credential-auditing.md)
+- [Additional utilities: Hashid, Medusa, DiE, Stegdetect, VeraCrypt, tcpflow, SQLite3, Androguard](extra-practical-tools.md)
 - [Malware triage: YARA, Sysinternals, PEStudio and safe sandboxing](malware-analysis.md)
 - [Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk](steganography.md)
 - [Social Engineering Toolkit: consent-based awareness simulation](social-engineering-tools.md)

@@ -17,14 +17,14 @@ From a provided pcap:
 tshark -r <LAB_CAPTURE> -Y 'tcp.flags.syn == 1 && tcp.flags.ack == 0'
 tshark -r <LAB_CAPTURE> -Y 'tcp.analysis.retransmission'
 tshark -r <LAB_CAPTURE> -Y 'dns'
-``
+```
 Correlate packet time/tuple with the firewall log, IDS signature, application log and lab rule. One packet pattern or alert alone rarely proves malicious intent.
 
 For local service context:
 ```bash
 ss -tulpen
 ip route
-``
+```
 
 ## 3. Inspect Suricata/Snort alerts
 File/log paths vary by installed version:
@@ -33,7 +33,7 @@ suricata --build-info
 snort -V
 sudo tail -n 100 /var/log/suricata/fast.log
 sudo tail -n 100 /var/log/snort/alert
-``
+```
 Use whichever sensor exists in the lab; do not assume both log paths are present. Preserve alert timestamp, signature/message, source/destination, ports, protocol and action. Follow local access permissions.
 
 ## 4. Safe validation procedure

@@ -1,4 +1,4 @@
-# Module 18 — IoT Hacking
+# Module 18 — IoT and OT Hacking
 
 ## Exam objective
 Identify common IoT/OT exposures in an authorized simulation: assets, network services, weak/default configuration, firmware lifecycle, MQTT/CoAP, segmentation and safety requirements. OT testing may affect availability and safety.

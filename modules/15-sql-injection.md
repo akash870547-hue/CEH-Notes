@@ -1,31 +1,31 @@
 # Module 15: SQL Injection
 
-## Exam focus
-SQL injection occurs when untrusted input changes a database query's structure. Know error-based, UNION-based, boolean/blind and time-based concepts, as well as parameterized queries, least-privilege DB accounts and safe error handling.
+## Practical focus
+SQL injection happens when untrusted input changes the structure of a database query. Know error-based, UNION-based, boolean/blind and time-based concepts, and especially how prepared/parameterized statements prevent query-structure changes.
 
-## Practical workflow
-1. Use only the designated vulnerable training application and URL.
-2. Capture a baseline request/response using browser DevTools or Burp/ZAP.
-3. Change one harmless test input at a time and compare status, response shape and error behavior.
-4. Use only the lab guide's approved validation method; avoid destructive queries and real data extraction.
-5. Save a minimal request/response pair and state what it proves and what it does not.
-6. Recommend prepared statements, input validation, least privilege and safe error handling.
+## Authorized lab workflow
+1. Verify the exact training app and URL in the lab guide.
+2. Capture one normal baseline request/response with browser DevTools or Burp/ZAP.
+3. Change one harmless input at a time and compare status, response shape and error behavior.
+4. Use only the lab guide's approved verification method. Avoid destructive statements and real data extraction.
+5. Save the smallest request/response pair that supports the conclusion.
+6. Recommend prepared statements, least-privilege DB accounts and safe error handling.
 
-## Key distinctions
-- **Error-based:** database error behavior exposes information.
-- **UNION-based:** query results are combined; applicability depends on query structure and column types.
-- **Boolean/blind:** infer behavior from different true/false responses.
+## Types to recognize
+- **Error-based:** database error behavior leaks query details.
+- **UNION-based:** combines query result sets; applicability depends on query structure and column compatibility.
+- **Boolean/blind:** infer behavior from true/false response differences.
 - **Time-based:** infer behavior from response timing; network jitter can mislead.
-- Scanner output is a lead, not proof on its own.
+- **Scanner output is a lead, not proof**; validate within scope.
 
 ## Evidence
-Record lab URL, request method, parameter tested, baseline response, changed response, reproducibility, impact and proposed fix.
+Lab URL, request method, parameter tested, baseline response, changed response, reproducibility, impact and suggested fix.
 
 ## Self-check
 1. Why are prepared statements the primary defense?
-2. Why is a database error not always sufficient proof?
-3. What is the difference between authentication and SQL injection?
-4. Why should the database account use least privilege?
-5. Which evidence can safely demonstrate the issue in a training app?
+2. Why is a database error alone not always proof?
+3. Why should a DB account use least privilege?
+4. How can an observation be demonstrated without extracting real data?
+5. What belongs in a useful evidence note?
 
 [Tool cheat sheet](../TOOLS-CHEATSHEET.md) · [Exam workflow](../EXAM-WORKFLOW.md)

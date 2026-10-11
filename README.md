@@ -7,7 +7,9 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 ## Start here
 
 - [Exam workflow](EXAM-WORKFLOW.md) — repeatable approach for scenario / flag-based objectives.
-- [Full tools & command cheat sheet](TOOLS-CHEATSHEET.md) — syntax patterns, output interpretation and troubleshooting.
+- [Complete tool-by-tool command library](tools/README.md) — basic to advanced command guides for Nmap, DNS, SMB/SNMP/LDAP, web tools, Burp/ZAP, sqlmap, scanners, Metasploit, Wireshark, wireless, system/password audit, mobile, cloud, OpenSSL and more.
+- [Full tools & command cheat sheet](TOOLS-CHEATSHEET.md) — quick syntax patterns, output interpretation and troubleshooting.
+- [Quick tool reference](TOOLS-QUICK-REFERENCE.md) — condensed commands for rapid revision.
 - [Last-day revision checklist](REVISION-CHECKLIST.md) — key concepts and self-test.
 - [Lab notes template + troubleshooting](LAB-NOTES-TEMPLATE.md) — record output/evidence and diagnose common issues.
 - [Phase 1: Recon → Scan → Enumeration](modules/PHASE-1-RECON-SCAN-ENUM.md) — Modules 02–05 as one workflow.

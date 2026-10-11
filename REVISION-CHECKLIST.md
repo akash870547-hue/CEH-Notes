@@ -1,52 +1,66 @@
-# Last-Day CEH Practical Revision Checklist
+# CEH v13 Practical — Last-Day Revision Checklist
 
-## Workflow muscle memory
-- [ ] Scope → observe → hypothesize → validate → evidence → submit → stop.
-- [ ] Know the five ethical-hacking phases and how the practical objective maps to them.
-- [ ] Every note states target, method, finding, evidence and limitation.
+Use this as a quick confidence check, not as a substitute for practicing the exact tools installed in your lab VM. Tick only what you can explain or demonstrate.
 
-## Network
-- [ ] Difference between IP, MAC, hostname, FQDN, subnet, port and protocol.
-- [ ] DNS A / AAAA / MX / NS records.
-- [ ] TCP vs UDP; open vs closed vs filtered.
-- [ ] Route/interface checks before blaming a tool.
-- [ ] What Nmap service/version output can and cannot prove.
+## Universal lab workflow
+- [ ] Identify exact objective, output format, authorized target and stop condition.
+- [ ] Verify current IP/interface/route/DNS; don't rely on remembered lab IPs.
+- [ ] Read full tool output and validate before submitting a result.
+- [ ] Save sanitized evidence with timestamp, tool version and a limitation.
+- [ ] Distinguish the five ethical-hacking stages from the CEH Learn/Certify/Engage/Compete learning framework.
 
-## Enumeration and vulnerability analysis
-- [ ] SMB, SNMP, LDAP, DNS purposes and common exposure risks.
-- [ ] CVE vs CVSS; scanner finding vs validated vulnerability.
-- [ ] False positives, evidence, prioritization and remediation.
+## Module-by-module memory jog
 
-## System / malware / sniffing
-- [ ] Least privilege, account context, file permissions and log locations.
-- [ ] Hash / file type / strings are static clues; do not run unknown samples on a host.
-- [ ] Capture interface and display/capture filters; ARP/DNS/DHCP concepts.
-- [ ] Defensive indicators of DoS, spoofing, credential theft and malware.
+### Modules 01–05: Foundations and assessment
+- [ ] **01 Ethical Hacking:** CIA triad, authorization/scope, RoE, hacker classes, risk, Cyber Kill Chain vs MITRE ATT&CK, incident/evidence handling.
+- [ ] **02 Recon:** passive vs active, DNS A/AAAA/MX/NS/TXT, WHOIS/RDAP, OSINT source confidence, HTTP/TLS headers.
+- [ ] **03 Scanning:** TCP vs UDP, Nmap -sn/-sT/-sV/-p/-oA, open/closed/filtered/open|filtered.
+- [ ] **04 Enumeration:** SMB/NetBIOS, SNMP, LDAP, DNS, RPC, NFS and BGP concepts; know the correct protocol tool and access context.
+- [ ] **05 Vulnerability Analysis:** CVE vs CVSS, authenticated vs unauthenticated scans, false positives, applicability, risk and retest.
 
-## Web / session / SQLi
-- [ ] HTTP methods, headers, status codes, cookies and redirects.
-- [ ] Secure / HttpOnly / SameSite and session invalidation.
-- [ ] Authentication vs authorization; role/object access control.
-- [ ] SQLi types conceptually; parameterized query is the core defense.
-- [ ] Record a request/response pair and verify impact without destructive changes.
+### Modules 06–10: Systems, malware, traffic and people
+- [ ] **06 System Hacking:** account context, permissions, password policy, audit logs, steganography/steganalysis concepts and evidence preservation.
+- [ ] **07 Malware:** hash/file/strings metadata, static vs dynamic analysis, IoCs, isolated sandbox and containment.
+- [ ] **08 Sniffing:** interface choice, capture filter vs display filter, ARP/DNS/TCP/HTTP/TLS visibility.
+- [ ] **09 Social Engineering:** sender vs Reply-To, SPF/DKIM/DMARC, URL hostname, urgency/pretext and independent verification.
+- [ ] **10 DoS:** DoS vs DDoS, volumetric/protocol/application patterns, resource metrics, rate limiting and upstream mitigation.
 
-## Wireless / mobile / IoT / cloud / crypto
-- [ ] WPA2/WPA3, rogue AP indicators, network segmentation.
-- [ ] Android permissions, APK static analysis, emulator use.
-- [ ] Default credentials, firmware updates, exposed services and IoT isolation.
-- [ ] Shared responsibility, IAM least privilege, public storage and audit logs.
-- [ ] Hashing vs encryption vs encoding; certificate hostname/date/issuer.
+### Modules 11–15: Session, perimeter and web
+- [ ] **11 Session Hijacking:** session rotation, cookie flags, expiry/invalidation, CSRF relationship.
+- [ ] **12 IDS/Firewall/Honeypots:** IDS vs IPS, stateful firewall vs WAF, alert correlation, rule tuning and false positives.
+- [ ] **13 Web Servers:** headers/methods, TLS hostname/chain/dates, default content, logs and server hardening.
+- [ ] **14 Web Applications:** authn vs authz, role/object access, upload validation, baseline request/response and business logic.
+- [ ] **15 SQL Injection:** error/UNION/blind/time/second-order concepts, repeatable evidence, parameterized queries and least privilege.
 
-## Final 10-minute routine
-- [ ] Read each objective and identify the exact output required.
-- [ ] Confirm correct lab target and tool.
-- [ ] Keep answers precise; do not submit assumptions as facts.
-- [ ] Check whitespace/case in values or flags.
-- [ ] Stop testing once the required result is verified.
+### Modules 16–20: Wireless, mobile, IoT/OT, cloud and crypto
+- [ ] **16 Wireless:** SSID/BSSID, channel, WPA2/WPA3, rogue AP clues and segmentation.
+- [ ] **17 Mobile:** package/version/permissions, exported components, local storage, TLS, ADB/JADX/MobSF in emulator.
+- [ ] **18 IoT and OT:** exposed services, unique credentials, firmware/update integrity, MQTT/CoAP and safety/availability.
+- [ ] **19 Cloud:** verify account/profile/region, shared responsibility, IAM least privilege, public storage, logs and secret handling.
+- [ ] **20 Cryptography:** hashing vs encryption vs encoding, salt, signatures, certificate SAN/issuer/dates/chain.
+
+## Core command recall
+- [ ] **Nmap:** discovery → scoped port scan → service/version → save output.
+- [ ] **DNS:** dig/host/nslookup; read record type, TTL and status.
+- [ ] **HTTP:** curl -I/-i/-v, browser DevTools Network.
+- [ ] **Packets:** tcpdump capture counts/filters; Wireshark display filters; pcap hash.
+- [ ] **System:** whoami/id/groups/sockets/logs; Windows whoami /all and Get-WinEvent.
+- [ ] **Files/crypto:** file, SHA-256, strings; OpenSSL certificate/TLS inspection.
+- [ ] **Web proxy:** Burp/ZAP baseline → one change → response compare → redact evidence.
+- [ ] **Scanner:** record exact plugin/request evidence; confirm applicability and re-test.
+
+## Final 10 minutes
+- [ ] Read each active task's final sentence for the required output format.
+- [ ] Confirm the current target and current lab phase.
+- [ ] Remove spaces/newlines only if the task's flag format requires it; don't alter actual values.
+- [ ] Submit the exact value, then stop testing that objective.
 
 ## Self-test
-1. A host does not answer ping. Is it necessarily offline? **No**—ICMP may be filtered; corroborate with authorized checks.
-2. Nmap reports an old server version. Does that prove a CVE? **No**—validate configuration/version and finding applicability.
-3. What does a 403 mean? **Forbidden** in the current request context; not proof that the resource does not exist.
-4. Are Base64 and hashing encryption? **No**.
-5. What is the best next action when a tool returns nothing? **Check target, scope, network path, protocol, permissions, and tool syntax systematically.**
+1. Ping doesn't respond. Is the host definitely down? **No**—ICMP can be filtered.
+2. Nmap shows old software version. Is a CVE proven? **No**—validate patch/build/configuration and prerequisites.
+3. Is 403 proof the resource doesn't exist? **No**—it is forbidden in that request context.
+4. Is Base64 encryption? **No**—it is encoding.
+5. Does a scanner's "critical" score equal business risk? **No**—include exposure, asset importance and impact.
+6. What is a safe response to unknown malware? **Hash and analyze in an isolated lab; do not run it on a personal machine.**
+
+**Deep study:** [Module index](README.md) · [Tool library](tools/README.md) · [Command recipes](tools/practical-command-recipes.md)

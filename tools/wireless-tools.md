@@ -8,21 +8,21 @@ iw dev
 iw list
 rfkill list
 ip link
-``
+```
 On Kali with Aircrack-ng tools:
 ```bash
 airmon-ng
 airmon-ng --help
 airodump-ng --help
 aircrack-ng --help
-``
+```
 Not every adapter/driver supports monitor mode or every band.
 
 ## 2. Review your own adapter/router
 ```bash
 iw dev <WIRELESS_INTERFACE> link
 iw dev <WIRELESS_INTERFACE> info
-``
+```
 For a router, prefer its admin page to verify WPA2-AES/WPA3, firmware version, WPS policy and guest isolation. Do not confuse a hidden SSID with encryption.
 
 ## 3. Monitor-mode workflow (dedicated lab adapter only)
@@ -30,19 +30,19 @@ First read the local Aircrack-ng guide and understand that monitor mode may disc
 ```bash
 sudo airmon-ng start <WIRELESS_INTERFACE>
 iw dev
-``
+```
 Stop if this disrupts a personal or production connection. The monitor interface name varies by driver.
 
 ## 4. Observe nearby lab APs
 ```bash
 sudo airodump-ng <MONITOR_INTERFACE>
-``
+```
 This is active radio monitoring and may show nearby network metadata. Limit your analysis to the lab AP/capture and follow local law/lab rules. Stop with Ctrl+C.
 
 ## 5. Focus on a specified lab AP (only if instructed)
 ```bash
 sudo airodump-ng --bssid <LAB_AP_BSSID> --channel <LAB_CHANNEL> --write lab-capture <MONITOR_INTERFACE>
-``
+```
 Keep the capture private. The BSSID, channel and AP must come from the authorized exercise. Avoid deauthentication/injection tactics against any network.
 
 ## 6. Analyze a supplied capture
@@ -51,7 +51,7 @@ file <LAB_FILE>
 sha256sum <LAB_FILE>
 wireshark <LAB_FILE>
 aircrack-ng <LAB_CAPTURE>
-``
+```
 The last command can inspect supported wireless captures and report metadata; do not use password-recovery modes against networks you don't own. If a controlled offline password-audit task is part of your lab, follow its supplied capture/wordlist and stopping conditions exactly.
 
 ## 7. Clues to recognize

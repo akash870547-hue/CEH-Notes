@@ -1,5 +1,7 @@
 # CEH v13 — Quick Tool Reference
 
+> This page is only the condensed sheet. For complete basic-to-advanced commands for each tool, open the [Complete Tool Library](tools/README.md) and the [practical command recipes](tools/practical-command-recipes.md).
+
 A condensed reminder for practical revision. Only use these against explicitly assigned lab targets. Replace all placeholders with today's range values.
 
 ## Connectivity and host information

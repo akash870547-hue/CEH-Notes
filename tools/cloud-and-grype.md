@@ -47,10 +47,30 @@ grype sbom:<LAB_SBOM_FILE>
 ```
 Exact source schemes/options vary by release; check `grype help`. Run only on a course-provided local image, directory or SBOM. JSON output can be large; keep it private if it includes internal package paths.
 
-## 6. Read Grype findings
+## 6. Trivy — image, filesystem and config scanning
+```bash
+trivy --version
+trivy image <LAB_IMAGE>
+trivy image --scanners vuln <LAB_IMAGE>
+trivy fs <LAB_DIRECTORY>
+trivy config <LAB_DIRECTORY>
+```
+Syntax/scanner names vary by release; use `trivy --help`. Scan only a course-supplied image or directory. Review package/version, fixed version, severity, file path and configuration evidence. Do not publish reports that expose private paths or secrets.
+
+## 7. Kubernetes read-only context checks (if the lab uses Kubernetes)
+```bash
+kubectl config current-context
+kubectl get namespaces
+kubectl get nodes
+kubectl get pods -n <LAB_NAMESPACE>
+kubectl auth can-i --list -n <LAB_NAMESPACE>
+```
+Confirm the context/cluster before every query; stop if it points to a personal or production cluster. These commands inspect current cluster resources/permissions. Do not apply/delete workloads, read secrets, or change RBAC unless explicitly required by a reversible lab exercise.
+
+## 8. Read Grype findings
 For each CVE, record package name/version, fixed version if available, severity, artifact source and whether the package is reachable/used. Prioritize confirmed affected components and exposure, not only the scanner's severity label. Rebuild/re-scan after upgrades.
 
-## 7. Common cloud/container controls
+## 9. Common cloud/container controls
 - Least-privilege IAM; no unnecessary wildcard action/resource.
 - Private-by-default object storage; public access explicitly reviewed.
 - Short-lived credentials/roles rather than long-lived keys.
@@ -58,7 +78,7 @@ For each CVE, record package name/version, fixed version if available, severity,
 - Secrets injected at runtime, not baked into image layers.
 - Pinned/reproducible base images, dependency updates and SBOM review.
 
-## 8. Troubleshooting
+## 10. Troubleshooting
 - Wrong account: stop, confirm profile and STS caller identity.
 - AccessDenied: don't attempt to bypass IAM; report required permission to lab owner.
 - Grype DB update fails offline: follow lab's preloaded DB procedure; don't assume an empty report means no vulnerabilities.

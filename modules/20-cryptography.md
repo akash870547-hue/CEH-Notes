@@ -1,27 +1,67 @@
-# Module 20: Cryptography
+# Module 20 — Cryptography
 
-## Practical focus
-Hashing vs encryption vs encoding, symmetric/asymmetric algorithms, salts, digital signatures, certificates, PKI, TLS validation, key lifecycle and implementation pitfalls.
+## Exam objective
+Choose the right cryptographic primitive, inspect certificate/TLS properties, verify file integrity and avoid confusing hashing, encryption and encoding.
 
-## Lab workflow
-1. Determine whether the objective asks about integrity, confidentiality, identity or encoding.
-2. Compute the hash of a supplied test file and compare it to a trusted reference.
-3. Inspect certificate subject/SAN, issuer, validity dates and chain using the provided viewer/OpenSSL.
-4. Record the result; never paste private keys, passwords or real tokens into notes.
-5. Recommend vetted libraries, safe key storage, rotation and hostname validation.
+## 1. Concepts to memorize
+- **Hash:** one-way digest for integrity; it does not hide input.
+- **Password hash:** purpose-built slow scheme with a unique salt and suitable work factor.
+- **Symmetric encryption:** one shared secret key encrypts/decrypts.
+- **Asymmetric crypto:** public/private key pair; used in key establishment and signatures.
+- **Digital signature:** supports integrity/origin authentication when keys and validation are trustworthy; it does not itself provide confidentiality.
+- **Encoding (Base64):** representation change, not security.
+- **Salt:** unique random value stored with a password hash; prevents easy precomputation/reuse across accounts.
+- **Certificate/PKI:** binds identity to a public key through a CA trust chain under validation rules.
 
-## Must remember
-- **Hashing:** one-way digest used for integrity. Passwords require a dedicated password-hashing scheme with a salt and work factor.
-- **Encryption:** reversible with the correct key; protects confidentiality.
-- **Encoding:** representation change (e.g. Base64), not a security control.
-- **Digital signature:** supports integrity and origin authentication when keys/validation are trustworthy; it does not provide confidentiality alone.
-- **Certificate validation:** check hostname/SAN, expiry, chain and relevant trust policy.
+## 2. Hash a course file and compare
+```bash
+sha256sum <LAB_FILE>
+openssl dgst -sha256 <LAB_FILE>
+```
+Windows:
+```powershell
+Get-FileHash .\sample.bin -Algorithm SHA256
+```
+Compare to a trusted reference. A match proves the file bytes match that reference, not that the file is safe.
 
-## Self-check
-1. Is Base64 encryption?
-2. Why salt password hashes?
-3. What does a certificate SAN identify?
-4. Difference between hash and signature?
-5. Why must private keys stay private?
+## 3. Inspect certificate metadata
+```bash
+openssl x509 -in <LAB_CERT.pem> -noout -subject -issuer -dates
+openssl x509 -in <LAB_CERT.pem> -noout -ext subjectAltName
+openssl x509 -in <LAB_CERT.pem> -noout -text
+```
+Check hostname/SAN, issuer, validity dates, signature algorithm and key type. PEM vs DER format matters.
 
-[Tool cheat sheet](../TOOLS-CHEATSHEET.md) · [Exam workflow](../EXAM-WORKFLOW.md)
+## 4. Inspect a lab TLS endpoint
+```bash
+openssl s_client -connect <LAB_DOMAIN>:443 -servername <LAB_DOMAIN> -showcerts
+testssl.sh --fast <LAB_DOMAIN>
+```
+SNI matters when several virtual hosts share an IP. The show-certs option displays certificates provided by the server but doesn't alone validate chain trust. Verify system time, hostname, chain and client trust.
+
+## 5. Encoding demonstration
+```bash
+printf 'CEH-LAB' | base64
+printf 'Q0VILUxBQg==' | base64 -d
+```
+Never store real secrets in public Base64 output. Encoding is reversible and is not encryption.
+
+## 6. Key-management checklist
+- Generate keys with well-reviewed libraries and appropriate parameters.
+- Store private keys in access-controlled stores/HSMs where appropriate.
+- Never commit keys to source control, logs, screenshots or issue trackers.
+- Rotate/revoke exposed keys and review access.
+- Use vetted protocol/library defaults; don't implement custom crypto.
+
+## 7. Common errors
+- Certificate expired/not-yet-valid: verify date and system clock.
+- Hostname mismatch: use expected DNS name and SNI, not just IP.
+- Untrusted chain: inspect intermediate certificates and trust store.
+- Hash mismatch: confirm exact file and algorithm.
+- "Encrypted" Base64 string: it was only encoded.
+- Deprecated hash algorithm: understand exam terminology but use modern primitives in real designs.
+
+## Lab drill
+Calculate a SHA-256, inspect a supplied certificate subject/issuer/dates/SAN and classify four operations as hashing, encryption, encoding or signing.
+
+**Related:** [OpenSSL tools](../tools/crypto-openssl.md) · [Mobile](17-hacking-mobile-platforms.md) · [Cloud](19-cloud-computing.md)

@@ -14,7 +14,7 @@ getent group
 ls -la <LAB_PATH>
 stat <LAB_FILE>
 find <LAB_LAB_PATH> -maxdepth 2 -type f -perm -004 -print
-``
+```
 Use the supplied lab paths; the `find` example is for auditing world-readable files, not exploiting permissions. Do not recursively search the whole host by default. `sudo -l` output is specific to the current account and sudo policy.
 
 ## 2. Windows checks
@@ -26,7 +26,7 @@ Get-LocalUser
 Get-LocalGroup
 Get-Acl C:\Lab\sample.txt
 icacls C:\Lab\sample.txt
-``
+```
 Record enabled/disabled state, group membership, ACL entries and inheritance. A permission is only a risk in context—show what the lab objective says should be allowed or denied.
 
 ## 3. Logs and authentication evidence
@@ -35,11 +35,11 @@ Linux:
 journalctl -p warning --since '1 hour ago'
 sudo grep -i 'failed\|accepted' /var/log/auth.log | tail -n 50
 last
-``
+```
 Windows:
 ```powershell
 Get-WinEvent -LogName Security -MaxEvents 30 | Select-Object TimeCreated,Id,Message
-``
+```
 Paths, event retention and access vary by OS. Correlate event time, account, source, and the test action. Never clear logs in an exam exercise.
 
 ## 4. Password policy and hash concepts

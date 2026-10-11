@@ -9,20 +9,25 @@ This directory is a **core tool-by-tool reference from beginner to advanced usag
 ### Network discovery and enumeration
 - [Nmap: host discovery, ports, versions, scripts, output](nmap.md)
 - [Recon and DNS: whois, dig, host, nslookup, curl](recon-dns.md)
-- [OSINT: theHarvester, ExifTool and source validation](recon-osint.md)
+- [OSINT: theHarvester, ExifTool, Shodan, Recon-ng, Maltego and metadata](recon-osint.md)
 - [Service enumeration: SMB, NetBIOS, SNMP, LDAP, RPC](network-enumeration.md)
+- [Protocol enumeration: DNS enum, NTP, SMTP, NFS, RPC and IKE](protocol-enumeration.md)
+- [General Linux / Windows CLI utilities](cli-utilities.md)
 - [hping3 and network diagnostics](hping3.md)
 - [Local host discovery: arp-scan and Netdiscover](host-discovery.md)
 - [Netcat / Ncat and basic socket diagnostics](netcat-ncat.md)
 
 ### Web and application testing
 - [curl, WhatWeb, Nikto, Gobuster, ffuf, testssl.sh](web-cli-tools.md)
+- [Web content discovery: DIRB, Dirsearch, WPScan, Wfuzz, Wappalyzer](web-content-discovery.md)
 - [Burp Suite and OWASP ZAP workflows](burp-zap.md)
 - [sqlmap, from safe detection to controlled validation](sqlmap.md)
 - [GUI web scanners: Acunetix / IBM AppScan workflow](gui-web-scanners.md)
 
 ### Vulnerability and exploitation frameworks
 - [Nessus / Greenbone (OpenVAS) scanning workflow](vulnerability-scanners.md)
+- [Nuclei template scanner](nuclei.md)
+- [SearchSploit exploit-reference search](searchsploit.md)
 - [Nuclei template scanner](nuclei.md)
 - [SearchSploit exploit-reference search](searchsploit.md)
 - [Metasploit Framework: console, modules, options and validation](metasploit.md)
@@ -32,6 +37,11 @@ This directory is a **core tool-by-tool reference from beginner to advanced usag
 - [Wireless tools: iw, airodump-ng and capture review](wireless-tools.md)
 - [Linux / Windows system inspection, hashes and offline password-audit basics](system-and-password-audit.md)
 - [Credential auditing: Hydra plus offline John/Hashcat workflows](credential-auditing.md)
+- [Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk](steganography.md)
+- [Malware triage: YARA, Sysinternals, PEStudio and sandboxing](malware-analysis.md)
+- [Social Engineering Toolkit: consent-based awareness](social-engineering-tools.md)
+- [Msfvenom tool orientation and safe lab handling](msfvenom-reference.md)
+- [Firewall, IDS and IPS: Snort, Suricata, UFW, nftables](firewall-ids.md)
 - [Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk](steganography.md)
 - [Bettercap: safe lab reconnaissance and traffic visibility](bettercap.md)
 

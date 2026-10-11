@@ -21,7 +21,7 @@ vmstat 1 5
 ss -s
 ss -ant | head -n 30
 journalctl -p warning --since '30 minutes ago'
-``
+```
 If available, `sar -n DEV 1 5` reports network interface statistics. Windows: Task Manager/Resource Monitor, `Get-Counter`, and relevant System/Application event logs.
 
 ## 3. Small, passive packet review
@@ -29,7 +29,7 @@ If available, `sar -n DEV 1 5` reports network interface statistics. Windows: Ta
 sudo tcpdump -i <INTERFACE> -nn -c 100 'host <LAB_IP>'
 tshark -r <LAB_CAPTURE> -Y 'tcp.flags.syn == 1 && tcp.flags.ack == 0'
 tshark -r <LAB_CAPTURE> -Y 'icmp'
-``
+```
 Use supplied capture where possible. Many SYN packets alone do not prove a SYN flood; check completion rates, source diversity, packet rate, service metrics and baseline. Source IPs can be spoofed or shared.
 
 ## 4. Web/application evidence

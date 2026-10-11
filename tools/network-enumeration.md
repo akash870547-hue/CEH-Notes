@@ -32,6 +32,14 @@ quit
 ```
 Only download the specific file the exercise asks you to inspect. A denied share may indicate permission policy rather than a server vulnerability.
 
+Classic enum4linux and anonymous-share checks (authorized lab only):
+```bash
+enum4linux -h
+enum4linux -a <LAB_IP>
+smbclient -L //<LAB_IP> -N
+```
+The classic `enum4linux -a` option can run a broad series of checks; use it only if the lab asks for that breadth. `-N` attempts a no-password SMB session and is useful only when anonymous access is in scope. A failed anonymous query does not prove authenticated access is safe or unsafe.
+
 ## 4. NetBIOS and SMB inventory
 If installed in the lab, `nmblookup` can query NetBIOS names:
 ```bash

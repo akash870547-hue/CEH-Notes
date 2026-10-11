@@ -78,6 +78,23 @@ nmap -sC -sV -p 22,80,443 <LAB_IP>
 - `-sC` runs the default script set; review its effects and lab rules first.
 - Combining options saves time but can increase probing. Begin small, then expand when the result justifies it.
 
+## More useful options (intermediate / advanced)
+```bash
+nmap -Pn -sT -p 80,443 <LAB_IP>
+nmap --top-ports 100 -sT <LAB_IP>
+nmap -p- -sT -T3 <LAB_IP>
+nmap -sV --reason -p 22,80,443 <LAB_IP>
+nmap -n -sT -p 22,80,443 <LAB_IP>
+nmap -iL <LAB_TARGETS_FILE> -sT -p 80,443
+```
+- `-Pn`: skip host discovery and treat the specified host as online; useful when discovery probes are blocked, but it can scan a host that is actually offline.
+- `--top-ports 100`: scan selected common ports instead of every port.
+- `-p-`: all TCP port numbers. Use only when the task requires it; it increases scan time and traffic.
+- `--reason`: include why Nmap assigned a state.
+- `-n`: disable DNS resolution, which can speed output and avoid confusing reverse lookups.
+- `-iL`: read targets from a file; every entry must be within today's authorized scope.
+Do not combine options mechanically: the best scan is the narrowest one that answers the objective.
+
 ## 8. Port states to memorize
 
 | State | Meaning | Exam interpretation |

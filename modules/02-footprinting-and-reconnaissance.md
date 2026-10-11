@@ -19,14 +19,14 @@ dig +noall +answer <LAB_DOMAIN> A
 dig @<LAB_DNS_IP> <LAB_DOMAIN> A
 host <LAB_DOMAIN>
 nslookup <LAB_DOMAIN>
-``
+```
 **Read:** record type, answer, TTL and response status. A/AAAA map to IPv4/IPv6, MX lists mail exchangers, NS lists name servers, TXT can hold verification or mail policy values. `ANY` is not a reliable all-records query. NXDOMAIN applies to the resolver's DNS view; split-horizon DNS and caches can change answers.
 
 ## 3. Registration and public research
 ```bash
 whois <LAB_DOMAIN>
 whois <LAB_IP>
-``
+```
 Record registry/registrar, nameservers, dates and network range where present. Registrant details may be privacy-protected. WHOIS/RDAP does not prove the server is reachable or that a specific service is vulnerable.
 
 Use search engines/public sources only according to lab instructions and applicable policies. Record query/source/date. Avoid collecting unrelated personal information or attempting to access private accounts.
@@ -36,7 +36,7 @@ Use search engines/public sources only according to lab instructions and applica
 curl -I https://<LAB_DOMAIN>/
 curl -sS -o /dev/null -w '%{http_code} %{content_type}\n' https://<LAB_DOMAIN>/
 curl -v https://<LAB_DOMAIN>/
-``
+```
 - `-I`: sends HEAD (may differ from GET).
 - `-w`: prints response metadata.
 - `-v`: connection/TLS diagnostics; redact headers before sharing.

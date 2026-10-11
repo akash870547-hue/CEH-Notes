@@ -12,14 +12,14 @@ This guide is for the **isolated CEH Cyber Range or an explicitly designated tes
 hydra -h
 john --help
 hashcat -h
-``
+```
 Hydra service modules and syntax differ by version. Follow the installed help and the lab service module.
 
 ## 3. Bounded online check (lab-only, low rate)
 Only if the course task explicitly requires a controlled login test against the lab VM and gives a test user:
 ```bash
 hydra -l <LAB_TEST_USER> -P <SMALL_LAB_WORDLIST> -t 1 -f -w 3 ssh://<LAB_IP>
-``
+```
 What the options do:
 - `-l`: one designated test username.
 - `-P`: password list supplied for the lab (keep it small).
@@ -35,7 +35,7 @@ file <LAB_HASH_FILE>
 john --list=formats
 john --format=<LAB_HASH_FORMAT> --wordlist=<LAB_WORDLIST> <LAB_HASH_FILE>
 john --show <LAB_HASH_FILE>
-``
+```
 Use only course-provided hashes. Hash format names vary by build; choose the exact compatible format from the installed tool help.
 
 ## 5. Offline Hashcat workflow
@@ -43,7 +43,7 @@ Use only course-provided hashes. Hash format names vary by build; choose the exa
 hashcat -I
 hashcat -m <LAB_HASH_MODE> -a 0 <LAB_HASH_FILE> <LAB_WORDLIST>
 hashcat -m <LAB_HASH_MODE> --show <LAB_HASH_FILE>
-``
+```
 - `-m`: hash type/mode.
 - `-a 0`: dictionary/straight mode.
 Only use the hash mode and wordlist specified for the training exercise. Don't upload hashes to online cracking sites.

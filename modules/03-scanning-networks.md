@@ -1,46 +1,73 @@
-# Module 03: Scanning Networks
+# Module 03 — Scanning Networks
 
-## Exam focus
-Host discovery, TCP/UDP concepts, port states, service/version detection, OS fingerprinting, and scan planning.
+## Exam objective
+Identify live hosts and exposed services in the assigned range, distinguish port states correctly, and capture a reproducible scan result. Never scan a broader network than the lab assigns.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Verify the local path first
+```bash
+ip addr
+ip route
+ip neigh
+ping -c 3 <LAB_IP>
+nmap --version
+``
+Ping failure does not prove the host is down: ICMP may be filtered, and the target may still answer on a permitted TCP/UDP service.
+
+## 2. Nmap progression — broad to focused
+```bash
+nmap -sn <LAB_SUBNET>
+nmap -sT -T3 <LAB_IP>
+nmap -p 22,80,443 <LAB_IP>
+nmap -sV -p 22,80,443 <LAB_IP>
+nmap -oA evidence/host-scan <LAB_IP>
+``
+- `-sn`: host discovery without port scan.
+- `-sT`: TCP connect scan.
+- `-p`: select ports/ranges.
+- `-sV`: service/version probes.
+- `-oA`: save normal, XML and grepable outputs with one base name.
+- `-T3`: a moderate timing template; use the setting the lab specifies.
+- SYN scans and OS fingerprinting commonly need elevated privileges; only elevate inside your lab when needed.
+
+Advanced but still bounded:
+```bash
+sudo nmap -sU -p 53,123,161 <LAB_IP>
+sudo nmap -O <LAB_IP>
+nmap --traceroute <LAB_IP>
+``
+UDP results can be ambiguous and slower. OS detection is a guess based on network responses, not a guarantee.
+
+## 3. Port-state interpretation
+| State | Meaning | What to do next |
+|---|---|---|
+| open | A service responds on the port | identify service and follow task |
+| closed | Target reachable, no listener accepted probe | verify expected service/port |
+| filtered | Filter blocks a definitive answer | note filtering; check route/ACL if in scope |
+| open|filtered | Scanner can't decide | common on some UDP tests |
+| closed|filtered | Scanner can't decide between those states | interpret within scan type |
+
+TCP and UDP are separate. A TCP port finding does not answer whether the same-numbered UDP port is open.
+
+## 4. NSE scripts
+Nmap Scripting Engine adds targeted checks; script effects vary.
+```bash
+nmap --script-help http-title
+nmap --script http-title -p 80,443 <LAB_IP>
+nmap --script ssl-cert -p 443 <LAB_IP>
+``
+Read a script's purpose before use. Use scripts classified as safe/discovery only when the lab allows them; avoid indiscriminate `--script all` or vulnerability scripts without explicit authorization.
+
+## 5. Practical evidence format
+Save the command, Nmap version, authorized target, time, relevant host/port lines and output filename. Write service/version as “detected” not “verified” unless corroborated. A banner alone is insufficient proof of a CVE.
+
+## 6. Common failures
+- **Host appears down:** verify subnet mask, VPN, interface and host-discovery behavior.
+- **No ports shown:** wrong IP, filtering, different port, or service down.
+- **Version is blank/inaccurate:** probe blocked, proxy banner, or service does not disclose details.
+- **Permission error:** run only the required scan with lab-approved privileges.
+- **Unexpectedly slow:** narrow ports, avoid unnecessary UDP/full-range scans and respect lab timing.
 
 ## Lab drill
-**Exercise:** Scan only the instructor-provided lab subnet; compare a small discovery scan with a service/version scan and explain each finding.
+Run a discovery scan, then a focused scan for only the ports named in the task. Compare what each command tells you and what it cannot establish.
 
-**Tool families to recognize:** Nmap, ping, ip, ss, Wireshark
-
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
-
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
-
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
-
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
-
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+**Related:** [Nmap complete guide](../tools/nmap.md) · [Packet analysis](../tools/packet-analysis.md)

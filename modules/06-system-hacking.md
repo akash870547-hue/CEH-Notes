@@ -62,7 +62,7 @@ Not every format is supported by Steghide, and no finding does not prove no hidd
 ## 6. System-hacking process concepts
 The module may cover password attacks, privilege escalation concepts, persistence and log/evidence impact. For the practical, prioritize evidence-based configuration review and the specific objective. Do not install persistence, disable security controls, or modify startup/registry/cron tasks unless a purpose-built lab explicitly instructs a reversible simulation.
 
-## 6. Evidence and interpretation
+## 7. Evidence and interpretation
 Record identity, host, command, key output, file path, timestamp and expected policy. For permission problems distinguish:
 - authentication: who are you?
 - authorization: is this identity permitted to do this?

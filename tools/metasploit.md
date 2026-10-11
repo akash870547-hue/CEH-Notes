@@ -7,7 +7,7 @@ Metasploit is a framework for controlled exploit validation, auxiliary scanning 
 msfconsole
 msfconsole -q
 msfconsole -h
-``
+```
 Inside `msfconsole`:
 ```text
 help
@@ -16,14 +16,14 @@ search <keyword>
 search type:auxiliary <keyword>
 info <module_path>
 show -h
-``
+```
 
 ## 2. Search and inspect modules
 ```text
 search type:auxiliary name:scanner
 search <service>
 info auxiliary/scanner/<category>/<module>
-``
+```
 Use the full path shown by your installed version. Module names and availability vary with release; verify with `info` and the module's references.
 
 ## 3. Configure a module
@@ -36,13 +36,13 @@ set RHOSTS <LAB_IP>
 set RPORT <LAB_PORT>
 set THREADS 1
 check
-``
+```
 Not all options/modules support `check`, `show targets` or `show advanced`. Set only options actually listed in `show options`. Keep RHOSTS to the single target unless the lab explicitly assigns a range.
 
 ## 4. Run a lab-approved auxiliary check
 ```text
 run
-``
+```
 Some modules use `exploit` as a generic run alias; confirm module behavior with `info`. A scanner may query many endpoints or trigger IDS alerts, so use a small scope and the prescribed rate.
 
 ## 5. Exploit modules: strict preflight
@@ -63,7 +63,7 @@ jobs -l
 jobs -h
 back
 exit
-``
+```
 Only interact with sessions created by the authorized lab. Do not run arbitrary commands or modify the target beyond the defined objective.
 
 ## 7. Save evidence

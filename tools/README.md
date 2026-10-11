@@ -17,6 +17,7 @@ This directory is a **tool-by-tool reference from beginner to advanced usage**. 
 - [curl, WhatWeb, Nikto, Gobuster, ffuf, testssl.sh](web-cli-tools.md)
 - [Burp Suite and OWASP ZAP workflows](burp-zap.md)
 - [sqlmap, from safe detection to controlled validation](sqlmap.md)
+- [GUI web scanners: Acunetix / IBM AppScan workflow](gui-web-scanners.md)
 
 ### Vulnerability and exploitation frameworks
 - [Nessus / Greenbone (OpenVAS) scanning workflow](vulnerability-scanners.md)
@@ -32,6 +33,8 @@ This directory is a **tool-by-tool reference from beginner to advanced usage**. 
 - [Android: ADB, JADX, apkanalyzer and MobSF](mobile-tools.md)
 - [Cloud CLI and container image scanning with Grype](cloud-and-grype.md)
 - [OpenSSL, certificates, hashes and crypto checks](crypto-openssl.md)
+- [Log analysis: journalctl, grep, Get-WinEvent](log-analysis.md)
+- [Objective-based practical command recipes](practical-command-recipes.md)
 
 ## How to learn each tool
 1. Read the **purpose and prerequisites**.

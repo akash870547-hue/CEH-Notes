@@ -6,11 +6,11 @@
 ```bash
 hping3 --version
 hping3 --help
-``
+```
 General structure:
 ```bash
 hping3 [mode/options] <LAB_IP>
-``
+```
 
 ## 2. Small-count reachability probes
 ```bash
@@ -18,7 +18,7 @@ hping3 -1 -c 3 <LAB_IP>                 # ICMP mode, 3 probes
 sudo hping3 -S -p 443 -c 3 <LAB_IP>     # TCP SYN to selected lab port
 sudo hping3 -A -p 443 -c 3 <LAB_IP>     # TCP ACK probe
 sudo hping3 -U -p 53 -c 3 <LAB_IP>      # UDP probe to selected port
-``
+```
 - `-1`: ICMP mode.
 - `-S`: SYN flag.
 - `-A`: ACK flag.
@@ -30,7 +30,7 @@ Results depend on filtering, local privilege and target behavior. No response do
 ## 3. TTL and path troubleshooting
 ```bash
 sudo hping3 -S -p 443 -c 2 -t 1 <LAB_IP>
-``
+```
 `-t` sets TTL. This can help observe hop-related behavior in a lab, but use normal `traceroute`/`tracepath` first.
 
 ## 4. Save supporting evidence

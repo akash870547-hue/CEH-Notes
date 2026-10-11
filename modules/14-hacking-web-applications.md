@@ -15,7 +15,7 @@ Use a repeatable web testing workflow to evaluate authentication, authorization,
 curl -I <LAB_URL>
 curl -i <LAB_URL>
 curl -sS -o /dev/null -w '%{http_code}\n' <LAB_URL>
-``
+```
 Inspect request method, path, parameters, Host, Origin/Referer when relevant, cookies, response code, redirects and content. Browser DevTools gives a better view of dynamic sessions.
 
 ## 3. Main testing categories

@@ -17,12 +17,12 @@ hping3 [mode/options] <LAB_IP>
 hping3 -1 -c 3 <LAB_IP>                 # ICMP mode, 3 probes
 sudo hping3 -S -p 443 -c 3 <LAB_IP>     # TCP SYN to selected lab port
 sudo hping3 -A -p 443 -c 3 <LAB_IP>     # TCP ACK probe
-sudo hping3 -U -p 53 -c 3 <LAB_IP>      # UDP probe to selected port
+sudo hping3 -2 -p 53 -c 3 <LAB_IP>      # UDP mode, 3 probes to selected port
 ```
 - `-1`: ICMP mode.
 - `-S`: SYN flag.
 - `-A`: ACK flag.
-- `-U`: UDP mode.
+- `-2`: UDP mode. Important: `-U` sets the TCP URG flag; it is not UDP mode.
 - `-p`: destination port.
 - `-c`: packet count; bounded checks only.
 Results depend on filtering, local privilege and target behavior. No response does not prove the host is down.
@@ -43,4 +43,4 @@ Capture the test on your authorized interface with Wireshark/tcpdump and correla
 - Distinguish a firewall drop from a service not listening.
 - Keep source spoofing outside normal practice unless the isolated lab explicitly calls for it and the instructor explains return-path limitations.
 
-References: `man hping3` on the lab VM; [Nmap/hping network diagnostics context](https://nmap.org/book/man.html)
+References: [hping3 man page](https://manpages.debian.org/testing/hping3/hping3.8.en.html) · [Kali hping3 tool reference](https://www.kali.org/tools/hping3/)

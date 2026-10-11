@@ -54,6 +54,17 @@ aircrack-ng <LAB_CAPTURE>
 ```
 The last command can inspect supported wireless captures and report metadata; do not use password-recovery modes against networks you don't own. If a controlled offline password-audit task is part of your lab, follow its supplied capture/wordlist and stopping conditions exactly.
 
+## 6. Offline password audit (only a lab-provided capture)
+If the instructor explicitly assigns an offline WPA/WPA2 audit, use only the lab capture, the stated lab BSSID and the small wordlist provided for that exercise:
+```bash
+aircrack-ng --help
+aircrack-ng -w <LAB_WORDLIST> -b <LAB_AP_BSSID> <LAB_CAPTURE>
+```
+- `-w`: wordlist file.
+- `-b`: restrict analysis to the named lab BSSID.
+- Input is a previously supplied/captured file; this command does not capture traffic itself.
+A result depends on a compatible handshake and whether the test password is present in the wordlist. Failure to recover it does not prove the passphrase is strong. Do not collect other networks' handshakes, run deauthentication attacks, or expand to other BSSIDs. Keep the capture and any recovered lab password private.
+
 ## 7. Clues to recognize
 - SSID: advertised network name.
 - BSSID: AP radio MAC identifier.

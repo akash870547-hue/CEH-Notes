@@ -1,6 +1,6 @@
-# CEH v13 Practical Tools — Complete Command Library
+# CEH v13 Practical Tools — Core Command Library
 
-This directory is a **tool-by-tool reference from beginner to advanced usage**. Each guide gives syntax, key options, lab examples, output interpretation, troubleshooting, and a short practice task.
+This directory is a **core tool-by-tool reference from beginner to advanced usage**. It covers the recurring CLI/GUI workflows represented in these notes; it is not a claim that every tool ever mentioned across all CEH training editions is included. Always cross-check the tool inventory inside your current lab. Each guide gives syntax, key options, lab examples, output interpretation, troubleshooting, and a short practice task.
 
 > **Scope rule:** Replace placeholders only with the IPs, domains, URLs, interfaces, test accounts and files provided by your authorized CEH Cyber Range or your own isolated lab. Do not run active tests against public/third-party systems without explicit written authorization. Run potentially disruptive or exploit-validation options only when the lab objective explicitly permits them.
 

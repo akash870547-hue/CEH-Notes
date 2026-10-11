@@ -40,7 +40,7 @@ The baseline scan is designed for passive checks and can still create traffic. W
 Active scanning can send attack payloads and change server state. Run it only when a lab explicitly permits active tests:
 ```bash
 zap-full-scan.py -t <LAB_URL> -r zap-active-lab-report.html
-``
+```
 Review the version's CLI docs; do not treat all alerts as confirmed vulnerabilities.
 
 ## 6. Cookies / session checkpoints

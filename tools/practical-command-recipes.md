@@ -8,7 +8,7 @@ ip addr
 ip route
 nmap -sT -T3 -p <LAB_PORT> <LAB_IP>
 nmap -sV -p <LAB_PORT> -oN service.txt <LAB_IP>
-``
+```
 Evidence: target, port state, service/version output and limitations.
 
 ## Recipe 2: "Resolve the given hostname and inspect its web response"
@@ -17,14 +17,14 @@ dig <LAB_DOMAIN> A
 dig <LAB_DOMAIN> AAAA
 curl -I https://<LAB_DOMAIN>/
 curl -v https://<LAB_DOMAIN>/
-``
+```
 Evidence: DNS answer, HTTP status/headers, TLS/redirect behavior. Keep DNS resolution distinct from reachability.
 
 ## Recipe 3: "Check a TLS certificate"
 ```bash
 openssl s_client -connect <LAB_DOMAIN>:443 -servername <LAB_DOMAIN> -showcerts
 testssl.sh --fast <LAB_DOMAIN>
-``
+```
 Check SAN/hostname, issuer/chain, validity dates and protocol results. Use testssl options that exist in your installed version.
 
 ## Recipe 4: "Identify DNS/SMB/SNMP/LDAP exposure"
@@ -34,7 +34,7 @@ dig @<LAB_IP> <LAB_DOMAIN> A
 smbclient -L //<LAB_IP> -U <LAB_USER>
 snmpget -v2c -c <LAB_READONLY_COMMUNITY> <LAB_IP> sysDescr.0
 ldapsearch -x -H ldap://<LAB_IP>:389 -s base -b '' namingContexts
-``
+```
 Run only protocol checks relevant to the question and credentials supplied by the exercise; not every listed service will exist.
 
 ## Recipe 5: "Inspect a packet capture"
@@ -43,7 +43,7 @@ file <LAB_FILE>
 sha256sum <LAB_FILE>
 tshark -r <LAB_FILE> -Y 'dns'
 tshark -r <LAB_FILE> -Y 'http.request' -T fields -e frame.time -e ip.src -e http.host -e http.request.uri
-``
+```
 Use Wireshark for detailed stream, packet and protocol inspection. Protect capture files because they may contain sensitive content.
 
 ## Recipe 6: "Review a web application request"
@@ -67,7 +67,7 @@ sha256sum <LAB_APK>
 apkanalyzer apk summary <LAB_APK>
 apkanalyzer manifest permissions <LAB_APK>
 jadx -d jadx-output <LAB_APK>
-``
+```
 Use a course-provided APK only; static analysis has limits and decompiled code can be obfuscated.
 
 ## Recipe 9: "Inspect a local container image"
@@ -76,7 +76,7 @@ docker image ls
 docker image inspect <LAB_IMAGE>
 grype <LAB_IMAGE> -o table
 grype <LAB_IMAGE> -o json > grype-report.json
-``
+```
 Confirm local image/tag first. Findings must be interpreted against package version, fix availability and actual use.
 
 ## Recipe 10: "Record a password-hash audit result"
@@ -85,7 +85,7 @@ file <LAB_HASH_FILE>
 john --list=formats
 john --format=<LAB_HASH_FORMAT> --wordlist=<LAB_WORDLIST> <LAB_HASH_FILE>
 john --show <LAB_HASH_FILE>
-``
+```
 Offline training hashes only. Do not test password guesses against live logins.
 
 ## General exam checklist

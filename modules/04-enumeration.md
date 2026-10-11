@@ -75,4 +75,4 @@ At the interactive prompt use `help` to see supported commands, and stick to rea
 ## Lab drill
 Given one service port from your lab scan, identify the relevant protocol, run the smallest authorized enumeration query, and write: method, exact output, security implication, limitation and mitigation.
 
-**Related:** [Service enumeration tool guide](../tools/network-enumeration.md) · [Nmap](../tools/nmap.md)
+**Related:** [Service enumeration tool guide](../tools/network-enumeration.md) · [Protocol enumeration: DNS/NTP/SMTP/NFS/IKE](../tools/protocol-enumeration.md) · [Nmap](../tools/nmap.md)

@@ -27,6 +27,7 @@ This directory is a **tool-by-tool reference from beginner to advanced usage**. 
 - [Wireshark, tcpdump and tshark](packet-analysis.md)
 - [Wireless tools: iw, airodump-ng and capture review](wireless-tools.md)
 - [Linux / Windows system inspection, hashes and offline password-audit basics](system-and-password-audit.md)
+- [Credential auditing: Hydra plus offline John/Hashcat workflows](credential-auditing.md)
 - [Bettercap: safe lab reconnaissance and traffic visibility](bettercap.md)
 
 ### Mobile, cloud, containers and cryptography

@@ -70,4 +70,4 @@ Save the command, Nmap version, authorized target, time, relevant host/port line
 ## Lab drill
 Run a discovery scan, then a focused scan for only the ports named in the task. Compare what each command tells you and what it cannot establish.
 
-**Related:** [Nmap complete guide](../tools/nmap.md) · [Packet analysis](../tools/packet-analysis.md)
+**Related:** [Nmap complete guide](../tools/nmap.md) · [Local host discovery](../tools/host-discovery.md) · [Packet analysis](../tools/packet-analysis.md)

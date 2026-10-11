@@ -1,6 +1,6 @@
-# Phase 1 Focus — Reconnaissance, Scanning & Enumeration
+# Workflow Cluster — Reconnaissance, Scanning & Enumeration
 
-Modules 02–04 are easiest to revise as one chain: **what is known → which host/service exists → what that service reveals**.
+This is a **custom revision cluster**, not an official CEH Engage phase number. Modules 02–05 are easiest to revise as one chain: **what is known → which host/service exists → what that service reveals**.
 
 ## 1. Establish a scope card
 Record the exact hostname/IP/subnet provided by the lab. Resolve a hostname before scanning and keep your scan commands constrained to that range.

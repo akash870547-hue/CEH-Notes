@@ -12,6 +12,7 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 - [Quick tool reference](TOOLS-QUICK-REFERENCE.md) — condensed commands for rapid revision.
 - [Last-day revision checklist](REVISION-CHECKLIST.md) — key concepts and self-test.
 - [Lab notes template + troubleshooting](LAB-NOTES-TEMPLATE.md) — record output/evidence and diagnose common issues.
+- [Quality audit and coverage](QUALITY-AUDIT.md) — what was checked, corrections made and verification limits.
 - [Workflow: Recon → Scan → Enumeration](modules/PHASE-1-RECON-SCAN-ENUM.md) — Modules 02–05 as one workflow.
 - [Workflow: Session, Perimeter & Web Practicals](modules/PHASE-3-WEB-PERIMETER.md) — Modules 11–15 revision.
 

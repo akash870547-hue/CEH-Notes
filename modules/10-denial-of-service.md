@@ -1,46 +1,66 @@
-# Module 10: Denial-of-Service
+# Module 10 — Denial-of-Service (DoS)
 
-## Exam focus
-DoS vs DDoS, resource exhaustion, symptoms, rate limits, telemetry, safe test planning and defensive controls.
+## Exam objective
+Differentiate DoS from DDoS, identify likely resource bottlenecks from telemetry and capture, and recommend controlled mitigation. This module uses **analysis and low-impact diagnostics**; it does not provide traffic-flood commands.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Concepts
+- **DoS:** one or more sources exhaust a resource or prevent legitimate use.
+- **DDoS:** distributed sources make blocking harder and usually require provider/upstream coordination.
+- **Volumetric:** bandwidth/packet capacity saturated.
+- **Protocol/state exhaustion:** connection tables or protocol resources consumed.
+- **Application layer:** expensive requests or request rates overwhelm app/database resources.
+- **Legitimate traffic spike:** may resemble an attack; correlate with business events and request mix.
+
+## 2. Inspect host resource pressure
+Linux:
+```bash
+uptime
+top
+free -h
+vmstat 1 5
+ss -s
+ss -ant | head -n 30
+journalctl -p warning --since '30 minutes ago'
+``
+If available, `sar -n DEV 1 5` reports network interface statistics. Windows: Task Manager/Resource Monitor, `Get-Counter`, and relevant System/Application event logs.
+
+## 3. Small, passive packet review
+```bash
+sudo tcpdump -i <INTERFACE> -nn -c 100 'host <LAB_IP>'
+tshark -r <LAB_CAPTURE> -Y 'tcp.flags.syn == 1 && tcp.flags.ack == 0'
+tshark -r <LAB_CAPTURE> -Y 'icmp'
+``
+Use supplied capture where possible. Many SYN packets alone do not prove a SYN flood; check completion rates, source diversity, packet rate, service metrics and baseline. Source IPs can be spoofed or shared.
+
+## 4. Web/application evidence
+Review web server access/error logs for:
+- request rate and distribution over time;
+- repeated expensive endpoints;
+- status codes, response time and upstream errors;
+- client/source diversity and user-agent patterns;
+- correlation to CPU, memory, DB connections and load balancer health.
+
+Do not publish logs with session identifiers or personal data.
+
+## 5. Detection workflow
+1. Confirm impact and affected service/time window.
+2. Compare traffic/resource metrics with a normal baseline.
+3. Correlate packet, edge/load-balancer, application and system logs.
+4. Determine whether bottleneck is bandwidth, connection state, app CPU, database or dependency.
+5. Apply approved mitigations (rate limits, caching, connection/resource limits, WAF rules, filtering, upstream DDoS service) and assess collateral impact.
+6. Preserve evidence and verify recovery.
+
+## 6. Defensive controls
+Use capacity planning, rate limiting, connection/time limits, caching, request validation, queue/backpressure controls, redundant architecture and upstream DDoS mitigation. Firewall blocks alone may fail when traffic volume consumes the upstream link.
+
+## Troubleshooting
+- High CPU but normal network: investigate expensive application work/dependency failures.
+- High bandwidth but low request count: consider large payloads or non-HTTP traffic.
+- Many half-open connections: compare SYN/SYN-ACK/ACK ratios and service telemetry.
+- 5xx burst: correlate with app/database health.
+- One capture is not enough: capture loss and sampling can distort conclusions.
 
 ## Lab drill
-**Exercise:** Analyze a supplied traffic capture or dashboard; identify saturation symptoms and propose rate limiting, filtering and upstream coordination.
+Given a dashboard or pcap, identify the strongest evidence of saturation, name the likely resource, list one alternative explanation and propose two mitigations.
 
-**Tool families to recognize:** Wireshark, system metrics, web server logs; avoid uncontrolled flood tools
-
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
-
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
-
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
-
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
-
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+**Related:** [Packet analysis](../tools/packet-analysis.md) · [Log analysis](../tools/log-analysis.md)

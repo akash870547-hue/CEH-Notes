@@ -51,4 +51,4 @@ Report via the approved channel, preserve message headers, avoid interacting, an
 ## Lab drill
 Classify a supplied mock email as suspicious/not enough evidence/likely legitimate. Cite at least three observable indicators, one limitation and one independent verification step.
 
-**Related:** [Exam workflow](../EXAM-WORKFLOW.md) · [Log analysis](../tools/log-analysis.md)
+**Related:** [SET awareness simulation](../tools/social-engineering-tools.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Log analysis](../tools/log-analysis.md)

@@ -66,4 +66,4 @@ Retest result:
 ## Lab drill
 Using a test account and dummy record, verify an access-control rule or cookie attribute. Record expected vs observed and identify one limitation in your test.
 
-**Related:** [Burp/ZAP](../tools/burp-zap.md) · [Web CLI tools](../tools/web-cli-tools.md) · [SQL injection](15-sql-injection.md) · [Session security](11-session-hijacking.md)
+**Related:** [Burp/ZAP](../tools/burp-zap.md) · [Web CLI tools](../tools/web-cli-tools.md) · [Web content discovery](../tools/web-content-discovery.md) · [SQL injection](15-sql-injection.md) · [Session security](11-session-hijacking.md)

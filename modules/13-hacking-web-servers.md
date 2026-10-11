@@ -9,7 +9,7 @@ curl -I <LAB_URL>
 curl -i <LAB_URL>
 curl -sS -o /dev/null -w '%{http_code} %{content_type} %{size_download}\n' <LAB_URL>
 curl -X OPTIONS -i <LAB_URL>
-``
+```
 Use the lab URL exactly as supplied. HEAD can differ from GET; OPTIONS can be disabled or answered by a proxy. Do not send state-changing methods unless explicitly asked by the lab.
 
 ## 2. TLS checks
@@ -17,14 +17,14 @@ Use the lab URL exactly as supplied. HEAD can differ from GET; OPTIONS can be di
 openssl s_client -connect <LAB_DOMAIN>:443 -servername <LAB_DOMAIN> -showcerts
 openssl x509 -in <LAB_CERT.pem> -noout -subject -issuer -dates
 testssl.sh --fast <LAB_DOMAIN>
-``
+```
 Inspect hostname/SAN, dates, chain, protocol and cipher warnings. `-showcerts` displays certificates sent by the server but doesn't by itself validate trust. Use the right SNI hostname rather than testing only an IP.
 
 ## 3. Web server fingerprinting and checks
 ```bash
 whatweb <LAB_URL>
 nikto -h <LAB_URL> -output nikto-report.txt
-``
+```
 These tools send requests. Run only against the authorized lab host, with a low-impact lab profile if available. Review each result and validate applicability; do not assume an outdated-looking banner equals a vulnerable version.
 
 ## 4. Misconfigurations to recognize
@@ -44,7 +44,7 @@ systemctl status <LAB_SERVICE>
 journalctl -u <LAB_SERVICE> --since '1 hour ago'
 tail -n 100 <LAB_ACCESS_LOG>
 tail -n 100 <LAB_ERROR_LOG>
-``
+```
 Windows/IIS: use Event Viewer and the configured IIS log directory; verify site/app pool and binding configuration from the lab. Don't alter/delete logs.
 
 ## 6. Finding format

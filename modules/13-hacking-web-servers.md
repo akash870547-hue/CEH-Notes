@@ -1,46 +1,63 @@
-# Module 13: Hacking Web Servers
+# Module 13 — Hacking Web Servers
 
-## Exam focus
-HTTP methods, banners, directory exposure, default files, TLS configuration, server logs, misconfigurations and patching.
+## Exam objective
+Assess exposed server behavior and configuration: HTTP headers/methods, TLS certificate, default content, directory listing, version disclosure and logs. A banner alone does not prove an exploitable server vulnerability.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Record HTTP behavior
+```bash
+curl -I <LAB_URL>
+curl -i <LAB_URL>
+curl -sS -o /dev/null -w '%{http_code} %{content_type} %{size_download}\n' <LAB_URL>
+curl -X OPTIONS -i <LAB_URL>
+``
+Use the lab URL exactly as supplied. HEAD can differ from GET; OPTIONS can be disabled or answered by a proxy. Do not send state-changing methods unless explicitly asked by the lab.
+
+## 2. TLS checks
+```bash
+openssl s_client -connect <LAB_DOMAIN>:443 -servername <LAB_DOMAIN> -showcerts
+openssl x509 -in <LAB_CERT.pem> -noout -subject -issuer -dates
+testssl.sh --fast <LAB_DOMAIN>
+``
+Inspect hostname/SAN, dates, chain, protocol and cipher warnings. `-showcerts` displays certificates sent by the server but doesn't by itself validate trust. Use the right SNI hostname rather than testing only an IP.
+
+## 3. Web server fingerprinting and checks
+```bash
+whatweb <LAB_URL>
+nikto -h <LAB_URL> -output nikto-report.txt
+``
+These tools send requests. Run only against the authorized lab host, with a low-impact lab profile if available. Review each result and validate applicability; do not assume an outdated-looking banner equals a vulnerable version.
+
+## 4. Misconfigurations to recognize
+- Default sample/configuration pages or unnecessary diagnostic endpoints.
+- Directory listing or accidental backup/config file exposure.
+- Unnecessary HTTP methods or unsupported legacy protocols.
+- Server/version disclosure that facilitates fingerprinting (contextual risk).
+- Weak TLS configuration, expired/mismatched certificate or chain problems.
+- Excessive file permissions or secrets stored in web root.
+- Detailed error pages/debug mode or missing access control.
+- Missing/security headers—hardening issue whose impact depends on context.
+
+## 5. Server logs and operational verification
+Linux service examples (service names/log paths vary):
+```bash
+systemctl status <LAB_SERVICE>
+journalctl -u <LAB_SERVICE> --since '1 hour ago'
+tail -n 100 <LAB_ACCESS_LOG>
+tail -n 100 <LAB_ERROR_LOG>
+``
+Windows/IIS: use Event Viewer and the configured IIS log directory; verify site/app pool and binding configuration from the lab. Don't alter/delete logs.
+
+## 6. Finding format
+Target/port → method → exact response/setting → impact → evidence/limitations → fix → re-test. For example, a directory listing should include the exact in-scope path and what type of files are listed, but never download unrelated sensitive files.
+
+## 7. Common troubleshooting
+- Redirect loop: compare HTTP/HTTPS, Host/SNI and proxy behavior.
+- TLS error: verify hostname, time, cert chain and lab proxy.
+- 403/404: may be policy/route hiding, not necessarily absence/presence.
+- Server header removed: no reliable version clue; use approved inventory/config evidence.
+- Scan report is noisy: capture the exact request, status/body and validate one finding at a time.
 
 ## Lab drill
-**Exercise:** Review a lab server’s headers, TLS and exposed default content; document evidence and hardening steps.
+Inspect headers and TLS on the designated lab server, then review one approved scanner result. State one confirmed configuration issue and one item that remains unverified.
 
-**Tool families to recognize:** curl -I, testssl.sh, Nikto on an authorized lab, server logs
-
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
-
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
-
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
-
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
-
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+**Related:** [Web CLI tools](../tools/web-cli-tools.md) · [OpenSSL/TLS](../tools/crypto-openssl.md) · [Log analysis](../tools/log-analysis.md)

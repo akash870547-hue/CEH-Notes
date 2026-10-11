@@ -64,4 +64,4 @@ Never store real secrets in public Base64 output. Encoding is reversible and is 
 ## Lab drill
 Calculate a SHA-256, inspect a supplied certificate subject/issuer/dates/SAN and classify four operations as hashing, encryption, encoding or signing.
 
-**Related:** [OpenSSL tools](../tools/crypto-openssl.md) · [Mobile](17-hacking-mobile-platforms.md) · [Cloud](19-cloud-computing.md)
+**Related:** [OpenSSL tools](../tools/crypto-openssl.md) · [VeraCrypt](../tools/extra-practical-tools.md) · [Mobile](17-hacking-mobile-platforms.md) · [Cloud](19-cloud-computing.md)

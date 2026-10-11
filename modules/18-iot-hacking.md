@@ -1,25 +1,53 @@
-# Module 18: IoT Hacking
+# Module 18 — IoT Hacking
 
-## Practical focus
-IoT/OT asset discovery, default-credential risk, exposed services, firmware integrity/update, MQTT/CoAP concepts, device lifecycle and network segmentation. OT may have strict availability/safety constraints.
+## Exam objective
+Identify common IoT/OT exposures in an authorized simulation: assets, network services, weak/default configuration, firmware lifecycle, MQTT/CoAP, segmentation and safety requirements. OT testing may affect availability and safety.
 
-## Lab workflow
-1. Use the simulated device or assigned lab subnet only.
-2. Record the device/model/firmware version and exposed service details.
-3. Review supplied firmware/configuration for unsafe defaults and unnecessary services.
-4. Inspect provided MQTT/CoAP capture or lab logs if the objective requests it.
-5. Recommend unique credentials, signed updates, disabled unused services, segmentation and monitored egress.
+## 1. IoT security map
+Consider device identity, firmware/software supply chain, exposed ports, credential uniqueness, insecure management, update/signature process, telemetry, cloud pairing and network isolation. A default-credential warning is a risk; validate configuration only in the lab.
 
-## Safe artifact analysis
-- Use `file` and `sha256sum` to identify supplied artifacts.
-- Use `binwalk` only on firmware provided for analysis, in an appropriate lab.
-- Do not reset, update or stress a production device without explicit approval.
+## 2. Asset and service inventory (lab range)
+```bash
+ip addr
+ip route
+nmap -sn <LAB_SUBNET>
+nmap -sT -T3 -p 22,23,80,443,1883,5683 <LAB_IP>
+nmap -sV -p 22,23,80,443,1883,5683 <LAB_IP>
+```
+Selected ports are examples for SSH, Telnet, HTTP/S, MQTT and CoAP-like service clues; services may use different ports and UDP behavior differs. Scan only assigned lab hosts. An open port is not proof of misconfiguration.
 
-## Self-check
-1. Why are default passwords dangerous on unattended devices?
-2. What role do firmware updates play?
-3. Why segment IoT devices from workstations?
-4. What evidence demonstrates an exposed service?
-5. Why are OT tests subject to safety constraints?
+## 3. Analyze supplied firmware safely
+```bash
+file <LAB_FIRMWARE>
+sha256sum <LAB_FIRMWARE>
+binwalk <LAB_FIRMWARE>
+strings -n 6 <LAB_FIRMWARE> | head -n 80
+```
+Use an isolated VM and current tools. Do not flash/reboot physical devices unless expressly approved. A string resembling a password is not proof it is usable; treat candidate secrets as sensitive.
 
-[Tool cheat sheet](../TOOLS-CHEATSHEET.md) · [Exam workflow](../EXAM-WORKFLOW.md)
+## 4. MQTT / CoAP capture review
+```bash
+tshark -r <LAB_CAPTURE> -Y 'mqtt'
+tshark -r <LAB_CAPTURE> -Y 'coap'
+```
+Dissector availability and filters depend on version/traffic. Review broker/topic visibility, authentication indicators and transport protection using course traffic. Do not publish, subscribe, replay or alter messages on real devices.
+
+## 5. Lab assessment workflow
+1. Record device/model/firmware and assigned VLAN/subnet.
+2. Discover only in-scope hosts and services.
+3. Read configuration/firmware metadata supplied by the lab.
+4. Correlate findings with intended function and expected exposure.
+5. Recommend unique credentials, signed/verified updates, disabled unused services, secure management, segmentation and monitored egress.
+6. Consider safety and recovery plan before any active test.
+
+## 6. Common mistakes
+- Assuming every device supports standard tools or can safely restart.
+- Treating an open port or firmware string as a confirmed vulnerability.
+- Testing default credentials on production equipment.
+- Ignoring end-of-support firmware.
+- Connecting a test device directly to a personal network.
+
+## Lab drill
+Review a supplied IoT scan or firmware sample. Identify an exposed surface, evidence, one safety limitation and at least three mitigations.
+
+**Related:** [Nmap](../tools/nmap.md) · [Packet analysis](../tools/packet-analysis.md) · [OpenSSL/hashes](../tools/crypto-openssl.md)

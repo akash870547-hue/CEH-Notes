@@ -1,46 +1,69 @@
-# Module 04: Enumeration
+# Module 04 — Enumeration
 
-## Exam focus
-SMB, NetBIOS, SNMP, LDAP, DNS and service enumeration; authenticated vs unauthenticated results; least-privilege implications.
+## Exam objective
+After a service is discovered, use its protocol to gather only the information required by the exercise. Enumeration is not the same as simply seeing an open port.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Start by mapping service to protocol
+| Service clue | Common port | Tool family | Typical evidence |
+|---|---:|---|---|
+| SMB | TCP 445; legacy 139 | smbclient, enum4linux-ng | shares, host/domain info, access behavior |
+| NetBIOS | UDP 137/138, TCP 139 | nmblookup | NetBIOS names |
+| SNMP | UDP 161 | snmpget/snmpwalk | system OIDs and accessible values |
+| LDAP | TCP 389 / 636 for LDAPS | ldapsearch | naming context and permitted directory data |
+| DNS | TCP/UDP 53 | dig/host | records and resolver responses |
+| RPC | service-specific | rpcclient | permitted RPC metadata |
+
+Port numbers are defaults, not proof. Use discovered service/version and lab notes to confirm.
+
+## 2. SMB / NetBIOS
+```bash
+smbclient -L //<LAB_IP> -U <LAB_USER>
+nmblookup -A <LAB_IP>
+enum4linux-ng -h
+enum4linux-ng -S <LAB_IP>
+enum4linux-ng -U <LAB_IP>
+``
+Flags vary by enum4linux-ng version; check `-h`. Broad/all-check modes should be used only when explicitly allowed. Enter passwords interactively; don't place secrets in shell history.
+
+If the lab asks to inspect one share:
+```bash
+smbclient //<LAB_IP>/<LAB_SHARE> -U <LAB_USER>
+``
+At the prompt, use `ls`, navigate only within the task, then `quit`. A listed share is not necessarily readable, and denied access may be correct policy.
+
+## 3. SNMP (use supplied read-only credentials)
+```bash
+snmpget -v2c -c <LAB_READONLY_COMMUNITY> <LAB_IP> sysDescr.0
+snmpwalk -v2c -c <LAB_READONLY_COMMUNITY> <LAB_IP> system
+``
+SNMPv3 is preferable in real deployments and uses version-specific user/auth/privacy options. Do not guess community strings against arbitrary targets. Inventory data may be sensitive; keep output minimal.
+
+## 4. LDAP
+```bash
+ldapsearch -x -H ldap://<LAB_IP>:389 -s base -b '' namingContexts
+ldapsearch -x -H ldap://<LAB_IP>:389 -D '<LAB_BIND_DN>' -W -b '<LAB_BASE_DN>' '(objectClass=*)' dn
+``
+- `-x`: simple authentication mode.
+- `-H`: server URI.
+- `-s base`: base-object query.
+- `-D` plus `-W`: use the bind DN and prompt for password.
+Use the base DN and account provided by the exercise. A broad search can expose unnecessary directory data—filter narrowly to the requested attribute/entry.
+
+## 5. RPC
+```bash
+rpcclient -U <LAB_USER> <LAB_IP>
+``
+At the interactive prompt use `help` to see supported commands, and stick to read-only operations required by the lab. Commands vary by Samba build.
+
+## 6. Output logic and troubleshooting
+- **Authentication failure** is different from **authorization denied**.
+- **Anonymous access** should be recorded precisely: what operation succeeded without credentials?
+- **No SNMP answer** may mean filtering, wrong version/community, or service disabled.
+- **LDAP empty result** can mean wrong base DN/filter or access controls, not “no directory.”
+- **No NetBIOS name** does not imply SMB is absent; modern SMB can operate on 445 without NetBIOS.
+- Verify discovered port/service before selecting a protocol tool.
 
 ## Lab drill
-**Exercise:** Enumerate only exposed services on a designated VM; record service, method, result, and defensive recommendation.
+Given one service port from your lab scan, identify the relevant protocol, run the smallest authorized enumeration query, and write: method, exact output, security implication, limitation and mitigation.
 
-**Tool families to recognize:** smbclient, enum4linux-ng, snmpwalk, ldapsearch, rpcclient
-
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
-
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
-
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
-
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
-
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+**Related:** [Service enumeration tool guide](../tools/network-enumeration.md) · [Nmap](../tools/nmap.md)

@@ -9,14 +9,14 @@ dig -v
 curl --version
 ip addr
 ip route
-``
+```
 Confirm the given hostname and the authorized scope. Passive/public data may be stale or redacted.
 
 ## 2. WHOIS and registration lookup
 ```bash
 whois <LAB_DOMAIN>
 whois <LAB_IP>
-``
+```
 Read registrar/registry, dates, nameservers, status and network allocation. Privacy protections may hide registrant details. WHOIS data is not proof of live DNS or server ownership by itself.
 
 ## 3. dig: record types
@@ -29,7 +29,7 @@ dig <LAB_DOMAIN> TXT
 dig <LAB_DOMAIN> CNAME
 dig <LAB_DOMAIN> SOA
 dig <LAB_DOMAIN> ANY
-``
+```
 Note: `ANY` is frequently minimized/blocked and is not a reliable "show all records" command.
 
 ### Specify resolver and concise output
@@ -38,7 +38,7 @@ dig @<LAB_DNS_IP> <LAB_DOMAIN> A
 dig +short <LAB_DOMAIN> A
 dig +noall +answer <LAB_DOMAIN> MX
 dig +trace <LAB_DOMAIN>
-``
+```
 Use `+trace` only where permitted; it queries multiple DNS servers and can behave differently behind a lab resolver. `+short` suppresses much diagnostic context, so use full output while troubleshooting.
 
 ## 4. host and nslookup
@@ -49,7 +49,7 @@ host -t NS <LAB_DOMAIN>
 nslookup <LAB_DOMAIN>
 nslookup -type=MX <LAB_DOMAIN>
 nslookup <LAB_DOMAIN> <LAB_DNS_IP>
-``
+```
 Common exam trap: a failed lookup may be resolver reachability, record absence, split-horizon DNS, or a typo. Check response status and resolver before concluding.
 
 ## 5. HTTP header and page retrieval with curl
@@ -74,14 +74,14 @@ Options:
 curl -X OPTIONS -i <LAB_URL>
 curl -H 'User-Agent: CEH-Lab-Check' -I <LAB_URL>
 curl -H 'Content-Type: application/json' -i <LAB_URL>
-``
+```
 Do not send state-changing POST/PUT/DELETE requests unless the task explicitly tells you to and you understand the effect. Use test data only.
 
 ## 6. wget and retrieval
 ```bash
 wget --server-response <LAB_URL>
 wget -O response.html <LAB_URL>
-``
+```
 Avoid recursive mirroring or large downloads unless explicitly part of the lab task.
 
 ## 7. Route and reachability checks
@@ -92,7 +92,7 @@ ip neigh
 traceroute <LAB_IP>
 tracepath <LAB_IP>
 mtr -rw -c 5 <LAB_IP>
-``
+```
 Windows: `ipconfig /all`, `route print`, `tracert <LAB_IP>`, `nslookup <LAB_DOMAIN>`.
 
 ## 8. Common output interpretation

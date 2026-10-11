@@ -11,9 +11,18 @@ After a service is discovered, use its protocol to gather only the information r
 | SNMP | UDP 161 | snmpget/snmpwalk | system OIDs and accessible values |
 | LDAP | TCP 389 / 636 for LDAPS | ldapsearch | naming context and permitted directory data |
 | DNS | TCP/UDP 53 | dig/host | records and resolver responses |
-| RPC | service-specific | rpcclient | permitted RPC metadata |
+| RPC | service-specific | rpcclient / rpcinfo | permitted RPC metadata |
+| NFS | commonly TCP/UDP 2049 plus RPC | showmount, rpcinfo | exported paths and RPC services |
+| BGP | TCP 179 | router's read-only CLI in a lab | peer/state/route evidence |
 
 Port numbers are defaults, not proof. Use discovered service/version and lab notes to confirm.
+
+## NFS and BGP awareness
+```bash
+showmount -e <LAB_IP>
+rpcinfo -p <LAB_IP>
+```
+Use these only against the designated lab host; command availability and NFS/RPC version behavior vary. A listed export does not prove it is writable or that every client can mount it. For BGP, use the lab router's read-only command interface when supplied (for example, FRRouting: `vtysh -c 'show ip bgp summary'` and `vtysh -c 'show ip bgp'`). Do not configure peers, announce routes or alter routing state unless the exercise explicitly defines a reversible simulation.
 
 ## 2. SMB / NetBIOS
 ```bash

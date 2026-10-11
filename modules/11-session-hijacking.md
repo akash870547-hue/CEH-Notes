@@ -25,7 +25,7 @@ Command-line header inspection:
 ```bash
 curl -sS -D - -o /dev/null <LAB_URL>
 curl -I <LAB_URL>
-``
+```
 A public endpoint may set no session cookie until login; inspect the relevant authenticated lab request. Do not save/replay real session tokens in shared notes.
 
 ## 3. Safe verification workflow

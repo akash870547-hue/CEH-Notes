@@ -21,11 +21,11 @@ Use the mail client's **Show original / View source** in a safe training mailbox
 For a downloaded plain-text header file:
 ```bash
 grep -iE '^(from|reply-to|return-path|received|authentication-results|message-id):' <LAB_HEADER_FILE>
-``
+```
 PowerShell:
 ```powershell
 Select-String -Path .\headers.txt -Pattern '^(From|Reply-To|Return-Path|Received|Authentication-Results|Message-ID):'
-``
+```
 Headers can be forged or reflect forwarding; use the trusted receiving system's Authentication-Results and message path, not one field alone.
 
 ## 3. URL inspection

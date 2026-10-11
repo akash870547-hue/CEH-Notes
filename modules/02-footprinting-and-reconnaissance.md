@@ -61,4 +61,4 @@ Check HTTP status, redirects, server headers and TLS hostname/certificate. Finge
 ## Lab drill
 For the provided lab domain, gather A/AAAA/MX/NS, record the answer and TTL, then inspect HTTP headers. Provide one limitation for each observation.
 
-**Related:** [Recon/DNS commands](../tools/recon-dns.md) · [Tool index](../tools/README.md)
+**Related:** [Recon/DNS commands](../tools/recon-dns.md) · [OSINT and metadata](../tools/recon-osint.md) · [Tool index](../tools/README.md)

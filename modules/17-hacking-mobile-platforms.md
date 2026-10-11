@@ -67,4 +67,4 @@ Observe only the designated app, test account and controlled traffic. Capture re
 ## Lab drill
 For a supplied test APK, report SHA-256, package/version, three manifest observations, one runtime observation and one limitation. Do not label an observation exploitable without evidence.
 
-**Related:** [Mobile tools guide](../tools/mobile-tools.md) · [Crypto/TLS](../tools/crypto-openssl.md) · [Web testing](14-hacking-web-applications.md)
+**Related:** [Mobile tools guide](../tools/mobile-tools.md) · [SQLite3/Androguard](../tools/extra-practical-tools.md) · [Crypto/TLS](../tools/crypto-openssl.md) · [Web testing](14-hacking-web-applications.md)

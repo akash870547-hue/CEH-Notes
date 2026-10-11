@@ -6,19 +6,19 @@ sqlmap automates tests for SQL injection. Use it only against the deliberately v
 ```bash
 sqlmap --version
 sqlmap -hh
-``
+```
 
 ## 2. Start with a single lab URL/parameter
 ```bash
 sqlmap -u '<LAB_URL>/item.php?id=1' --batch
-``
+```
 Use the actual parameter from the lab page. Do not include real session tokens in saved commands.
 
 ## 3. Safer, lower-impact test options
 ```bash
 sqlmap -u '<LAB_URL>/item.php?id=1' --batch --risk=1 --level=1
 sqlmap -u '<LAB_URL>/item.php?id=1' --batch --technique=BEUSTQ --threads=1
-``
+```
 - `--batch`: choose tool defaults automatically; still read logs/output.
 - `--risk=1`: lowest risk level.
 - `--level=1`: least extensive test level.
@@ -30,7 +30,7 @@ The second example expands techniques; choose it only if the exercise asks and t
 Capture the exact request from browser DevTools/Burp and save it as a lab request file, then:
 ```bash
 sqlmap -r lab-request.txt --batch --risk=1 --level=1
-``
+```
 Check the request file to ensure its Host/URL are the lab target and remove unrelated cookies. Avoid sharing request files that contain credentials/session tokens.
 
 ## 5. Confirm DBMS / enumerate metadata only when asked
@@ -38,13 +38,13 @@ If the lab objective explicitly asks you to identify DBMS or list lab database n
 ```bash
 sqlmap -u '<LAB_URL>/item.php?id=1' --batch --dbms=<LAB_DBMS>
 sqlmap -u '<LAB_URL>/item.php?id=1' --batch --dbs
-``
+```
 Database enumeration can expose data, so do not use it unless it is explicitly part of the sanctioned challenge. Do not dump tables or rows from real systems. Stop once the required lab result is obtained.
 
 ## 6. Useful files and reporting
 ```bash
 sqlmap -u '<LAB_URL>/item.php?id=1' --batch -v 2
-``
+```
 sqlmap stores session/log data under its output directory; review what gets written and redact sensitive values. Consult `--help` for options specific to the installed version.
 
 ## 7. Read the result properly

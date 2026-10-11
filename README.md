@@ -7,13 +7,13 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 ## Start here
 
 - [Exam workflow](EXAM-WORKFLOW.md) — repeatable approach for scenario / flag-based objectives.
-- [Complete tool-by-tool command library](tools/README.md) — basic to advanced command guides for Nmap, DNS, SMB/SNMP/LDAP, web tools, Burp/ZAP, sqlmap, scanners, Metasploit, Wireshark, wireless, system/password audit, mobile, cloud, OpenSSL and more.
+- [Core tool-by-tool command library](tools/README.md) — basic to advanced command guides for Nmap, DNS, SMB/SNMP/LDAP, web tools, Burp/ZAP, sqlmap, scanners, Metasploit, Wireshark, wireless, system/password audit, mobile, cloud, OpenSSL and more.
 - [Full tools & command cheat sheet](TOOLS-CHEATSHEET.md) — quick syntax patterns, output interpretation and troubleshooting.
 - [Quick tool reference](TOOLS-QUICK-REFERENCE.md) — condensed commands for rapid revision.
 - [Last-day revision checklist](REVISION-CHECKLIST.md) — key concepts and self-test.
 - [Lab notes template + troubleshooting](LAB-NOTES-TEMPLATE.md) — record output/evidence and diagnose common issues.
-- [Phase 1: Recon → Scan → Enumeration](modules/PHASE-1-RECON-SCAN-ENUM.md) — Modules 02–05 as one workflow.
-- [Phase 3: Perimeter & Web Practicals](modules/PHASE-3-WEB-PERIMETER.md) — Modules 11–15 revision.
+- [Workflow: Recon → Scan → Enumeration](modules/PHASE-1-RECON-SCAN-ENUM.md) — Modules 02–05 as one workflow.
+- [Workflow: Session, Perimeter & Web Practicals](modules/PHASE-3-WEB-PERIMETER.md) — Modules 11–15 revision.
 
 ## CEH v13 — all 20 modules
 
@@ -41,7 +41,7 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 ### Mobile, IoT, cloud and crypto
 16. [Hacking Wireless Networks](modules/16-hacking-wireless-networks.md)
 17. [Hacking Mobile Platforms](modules/17-hacking-mobile-platforms.md)
-18. [IoT Hacking](modules/18-iot-hacking.md)
+18. [IoT and OT Hacking](modules/18-iot-hacking.md)
 19. [Cloud Computing](modules/19-cloud-computing.md)
 20. [Cryptography](modules/20-cryptography.md)
 

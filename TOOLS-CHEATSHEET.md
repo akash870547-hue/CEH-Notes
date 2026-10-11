@@ -105,7 +105,11 @@ Hashing is not encryption. Base64 is encoding. Check certificate subject/SAN, va
 | Wireshark/tcpdump | Packet capture and protocol analysis | correct interface/filter/time |
 | Burp Suite / OWASP ZAP | Web request/response inspection | target scope and baseline |
 | Nessus / Greenbone | Vulnerability assessment | safe profile, finding validation |
-| SMB/SNMP/LDAP clients | Service enumeration | protocol, permitted access, output |
+| SMB/SNMP/LDAP/NFS tools | Service enumeration | protocol, scope, access context |
+| theHarvester / ExifTool | OSINT and metadata | source, collection time, metadata caveats |
+| arp-scan / Netdiscover | Local-segment discovery | correct interface and lab CIDR |
+| SearchSploit / Nuclei | Exploit references / template checks | applicability, approved template, evidence |
+| Steghide / Binwalk | Steganography and file/firmware inspection | file hash/type, isolated analysis, no execution |
 | MobSF / JADX / ADB | Mobile app analysis | test APK/device only |
 | OpenSSL | TLS/certificate checks | correct hostname and certificate |
 | Cloud CLI / policy simulator | IAM/config review | sandbox identity/account and permissions |

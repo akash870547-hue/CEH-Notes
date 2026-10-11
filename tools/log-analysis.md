@@ -9,7 +9,7 @@ journalctl -p warning --since today
 journalctl -u <LAB_SERVICE> --since '1 hour ago'
 sudo tail -n 100 /var/log/auth.log
 sudo tail -f /var/log/syslog
-``
+```
 Log paths differ by distro. On some systems, authentication logs are in `/var/log/secure`; `journalctl` may be the main source.
 
 ## 2. Search text logs
@@ -19,7 +19,7 @@ grep -nE 'denied|error|warning' <LAB_LOG>
 grep -c 'Accepted' <LAB_LOG>
 tail -n 100 <LAB_LOG>
 less <LAB_LOG>
-``
+```
 - `-i`: case-insensitive.
 - `-n`: line numbers.
 - `-E`: extended regular expressions.
@@ -31,7 +31,7 @@ Always account for rotating logs/time zones and correlate the time window.
 cut -d' ' -f1-4 <LAB_LOG> | head
 sort <LAB_LOG> | uniq -c | sort -nr | head
 awk '{print $1, $2, $3}' <LAB_LOG> | head
-``
+```
 Log formats are often not space-delimited; test parsing against sample lines before concluding. Avoid publishing IPs, usernames or session identifiers unnecessarily.
 
 ## 4. Windows Event Viewer / PowerShell
@@ -40,14 +40,14 @@ Get-WinEvent -ListLog *
 Get-WinEvent -LogName Security -MaxEvents 50
 Get-WinEvent -FilterHashtable @{LogName='System'; StartTime=(Get-Date).AddHours(-1)} -MaxEvents 100
 Get-WinEvent -LogName System -MaxEvents 50 | Select-Object TimeCreated, Id, LevelDisplayName, Message
-``
+```
 Access to Security log depends on rights and OS policy. Event IDs and message fields vary across Windows versions/configuration.
 
 ## 5. Windows text search
 ```powershell
 Select-String -Path C:\Lab\*.log -Pattern 'failed|denied|error'
 Get-Content C:\Lab\sample.log -Tail 100
-``
+```
 Use the supplied lab folder. Avoid wildcarding across the whole machine.
 
 ## 6. Wireshark / packet logs

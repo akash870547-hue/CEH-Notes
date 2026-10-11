@@ -19,7 +19,7 @@ nmap <LAB_IP>
 nmap -sn <LAB_SUBNET>
 nmap -p 80,443 <LAB_IP>
 nmap -p 1-1000 <LAB_IP>
-``
+```
 - `-sn`: host discovery only; no port scan.
 - `-p`: select ports. Prefer only the relevant ports when a task is narrow.
 - A host may be alive even if ICMP-based discovery does not show it.
@@ -29,7 +29,7 @@ nmap -p 1-1000 <LAB_IP>
 nmap -sT <LAB_IP>               # TCP connect scan
 sudo nmap -sS <LAB_IP>          # SYN scan; commonly needs elevated privileges
 nmap -sT -T3 -p 22,80,443 <LAB_IP>
-``
+```
 - `-sT`: uses the OS connect call.
 - `-sS`: SYN scan; needs privileges on common platforms.
 - `-T0` to `-T5`: timing templates. Higher is faster/noisier; do not optimize stealth in a live environment. For a lab, use the rate/timing specified by the exercise.
@@ -39,7 +39,7 @@ nmap -sT -T3 -p 22,80,443 <LAB_IP>
 sudo nmap -sU -p 53,67,123,161 <LAB_IP>
 nmap -sV <LAB_IP>
 nmap -sV --version-light -p 22,80,443 <LAB_IP>
-``
+```
 - UDP can be slow and often returns `open|filtered` when a response is absent.
 - `-sV` probes services to infer their software/version.
 - Version output can be inaccurate or hidden by proxies/backports; validate before mapping a CVE.
@@ -48,7 +48,7 @@ nmap -sV --version-light -p 22,80,443 <LAB_IP>
 ```bash
 sudo nmap -O <LAB_IP>
 nmap --traceroute <LAB_IP>
-``
+```
 OS detection is probabilistic and may require a responsive host with useful open/closed ports.
 
 ## 5. Save and compare output
@@ -56,7 +56,7 @@ OS detection is probabilistic and may require a responsive host with useful open
 nmap -oN nmap.txt <LAB_IP>              # normal text
 nmap -oX nmap.xml <LAB_IP>              # XML for parsers
 nmap -oA lab-scan <LAB_IP>              # .nmap, .xml, .gnmap outputs
-``
+```
 Name output files by lab objective/date; don't include secrets in filenames.
 
 ## 6. NSE scripts: safe and targeted
@@ -67,14 +67,14 @@ nmap --script-help http-title
 nmap --script http-title -p 80,443 <LAB_IP>
 nmap --script ssl-cert -p 443 <LAB_IP>
 nmap --script banner -p 21,22,25,80 <LAB_IP>
-``
+```
 Use vulnerability-checking scripts only if the lab permits them and the target range is confirmed. Some scripts are intrusive; do not indiscriminately run `--script all`.
 
 ## 7. Helpful scan combinations
 ```bash
 nmap -sV -p 22,80,443 -oN services.txt <LAB_IP>
 nmap -sC -sV -p 22,80,443 <LAB_IP>
-``
+```
 - `-sC` runs the default script set; review its effects and lab rules first.
 - Combining options saves time but can increase probing. Begin small, then expand when the result justifies it.
 

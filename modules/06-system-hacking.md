@@ -79,4 +79,4 @@ Use a designated low-privilege account. Compare `whoami /all` or `id` with acces
 4. Why should logs remain untouched during the test?
 5. What is the safe handling rule for hashes and credentials?
 
-**Related:** [System and password audit](../tools/system-and-password-audit.md) · [Credential auditing](../tools/credential-auditing.md) · [Steganography](../tools/steganography.md) · [Log analysis](../tools/log-analysis.md)
+**Related:** [System and password audit](../tools/system-and-password-audit.md) · [Credential auditing](../tools/credential-auditing.md) · [Steganography](../tools/steganography.md) · [Log analysis](../tools/log-analysis.md) · [Msfvenom safe lab orientation](../tools/msfvenom-reference.md)

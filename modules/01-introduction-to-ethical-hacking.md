@@ -46,7 +46,7 @@ Required answer format:
 Evidence location:
 ```
 
-## 3. Repeatable practical method
+## 4. Repeatable practical method
 1. **Parse:** identify the exact requested value (e.g. service/version, record type, hash, alert or flag).
 2. **Scope:** confirm target and allowed action.
 3. **Baseline:** observe normal behavior first.
@@ -55,13 +55,13 @@ Evidence location:
 6. **Verify:** use a second signal if appropriate (tool + application response/log).
 7. **Submit and stop:** match case/format exactly; don't continue probing after success.
 
-## 4. Ethics, safety and evidence
+## 5. Ethics, safety and evidence
 - Never scan, intercept, stress-test or exploit a third-party system without explicit authorization.
 - Use test accounts and synthetic data. Redact cookies, passwords, API keys and personal information.
 - Preserve original evidence; do not clear logs or alter timestamps.
 - Keep tool output, date/time, target, version and a concise interpretation.
 
-## 5. Lab drill
+## 6. Lab drill
 Given a fictional target and a practical objective, create a scope card and decide which of these you can run: a local version check, a DNS lookup, a single-host scan, a web parameter test, a high-rate stress test. Explain why permission and scope differ for each.
 
 ## Quick self-test

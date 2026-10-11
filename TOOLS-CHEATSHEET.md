@@ -1,6 +1,6 @@
 # Tool & Command Cheat Sheet (CEH v13)
 
-> **Want the detailed commands for each tool? Start with the [Core Tool Library](tools/README.md).** It has individual beginner-to-advanced guides for Nmap, DNS/recon, SMB/SNMP/LDAP, web CLI tools, Burp/ZAP, sqlmap, Nessus/OpenVAS, Metasploit, hping3, Netcat, Wireshark/tcpdump/tshark, wireless, Bettercap, John/Hashcat, ADB/JADX/MobSF, cloud/Grype, OpenSSL and log analysis. [Objective-based command recipes](tools/practical-command-recipes.md) are also available.
+> **Want the detailed commands for each tool? Start with the [Core Tool Library](tools/README.md).** It has individual beginner-to-advanced guides for Nmap, DNS/recon, SMB/SNMP/LDAP, web CLI tools, Burp/ZAP, sqlmap, Nessus/OpenVAS, Metasploit, hping3, Netcat, Wireshark/tcpdump/tshark, wireless, Bettercap, John/Hashcat, ADB/JADX/MobSF, cloud/Grype, OpenSSL and log analysis. [Objective-based command recipes](tools/practical-command-recipes.md) and [additional practical utilities](tools/extra-practical-tools.md) are also available.
 
 Use commands only on the assigned course range, owned systems or explicitly authorized targets. Replace placeholders such as `<LAB_IP>`, `<LAB_SUBNET>`, `<LAB_DOMAIN>`, `<INTERFACE>`, and `<LAB_URL>` with values from your current lab sheet.
 

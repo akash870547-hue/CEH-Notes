@@ -12,7 +12,16 @@ Start every practical by proving that you understand **scope, permission, task o
 - **False positive:** the tool reports a weakness that does not apply or cannot be demonstrated in this context.
 - **False negative:** a weakness exists but the test did not identify it.
 
-## 2. Before the first command
+## 2. Concepts likely to appear in scenarios
+- **CIA triad:** confidentiality, integrity and availability; map each finding to the property it affects.
+- **Risk:** combine likelihood and impact; a technical severity score alone is not the full business risk.
+- **Hacker classes:** distinguish authorized ethical testing from unauthorized activity by permission and intent, not simply by tool.
+- **Cyber Kill Chain vs MITRE ATT&CK:** the Kill Chain is a high-level campaign-stage model; ATT&CK is a knowledge base of tactics/techniques observed in adversary behavior. They are related but not interchangeable.
+- **Controls:** administrative, technical and physical; preventive, detective and corrective.
+- **Compliance:** know why laws/standards such as privacy rules, PCI DSS and organizational policy affect authorization, data access and evidence retention. Do not treat certification notes as legal advice.
+- **AI-assisted security:** verify generated commands and findings, never submit private keys/session tokens into external AI tools, and stay within scope.
+
+## 3. Before the first command
 Use the lab sheet as the source of truth; do not reuse remembered IPs from another session.
 
 ```bash

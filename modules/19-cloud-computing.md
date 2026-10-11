@@ -1,26 +1,26 @@
 # Module 19: Cloud Computing
 
-## Exam focus
+## Practical focus
 Shared responsibility, IAM, least privilege, public storage exposure, security groups, metadata-service risk, audit trails, secrets management and key rotation.
 
 ## Lab workflow
-1. Confirm the exact sandbox account, tenant/subscription and region.
-2. Inspect identity, storage and network configuration using read-only commands first.
-3. Compare permissions to the stated task; flag public access, wildcard actions/resources and unused identities.
-4. Review audit logs and correlate to the lab activity timestamp.
-5. Recommend least privilege, private-by-default storage, managed secrets, key rotation and continuous posture checks.
+1. Confirm the precise sandbox account/tenant, subscription and region.
+2. Inspect identities, storage and network configuration with read-only commands first.
+3. Compare access policies to the task; note public access, wildcard permissions and unused identities.
+4. Review audit records and correlate them to the test timestamp.
+5. Recommend least privilege, private-by-default storage, managed secrets, rotation and continuous posture checks.
 
 ## Core concepts
-- Cloud security is shared between provider and customer; exact responsibility depends on service type.
-- An IAM permission should be scoped to the minimum actions and resources needed.
-- Avoid running commands against a personal or production cloud profile during exam practice.
-- A configuration scanner may flag context-specific conditions; validate before reporting.
+- Provider/customer responsibility depends on the service model.
+- IAM policies should grant only the minimum required actions on the minimum required resources.
+- Never run a lab command against a personal or production cloud profile by accident.
+- A configuration scanner can flag context-specific conditions; validate before reporting.
 
 ## Self-check
-1. What is shared responsibility?
+1. What does shared responsibility mean?
 2. Why are wildcard IAM policies risky?
-3. Which evidence proves a storage bucket/container is public?
-4. Why use read-only inspection first?
-5. What should happen when a credential is exposed?
+3. What evidence proves a storage resource is public?
+4. Why begin with read-only inspection?
+5. What should happen after a credential exposure?
 
 [Tool cheat sheet](../TOOLS-CHEATSHEET.md) · [Exam workflow](../EXAM-WORKFLOW.md)

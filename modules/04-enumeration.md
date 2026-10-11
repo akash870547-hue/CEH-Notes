@@ -22,27 +22,27 @@ nmblookup -A <LAB_IP>
 enum4linux-ng -h
 enum4linux-ng -S <LAB_IP>
 enum4linux-ng -U <LAB_IP>
-``
+```
 Flags vary by enum4linux-ng version; check `-h`. Broad/all-check modes should be used only when explicitly allowed. Enter passwords interactively; don't place secrets in shell history.
 
 If the lab asks to inspect one share:
 ```bash
 smbclient //<LAB_IP>/<LAB_SHARE> -U <LAB_USER>
-``
+```
 At the prompt, use `ls`, navigate only within the task, then `quit`. A listed share is not necessarily readable, and denied access may be correct policy.
 
 ## 3. SNMP (use supplied read-only credentials)
 ```bash
 snmpget -v2c -c <LAB_READONLY_COMMUNITY> <LAB_IP> sysDescr.0
 snmpwalk -v2c -c <LAB_READONLY_COMMUNITY> <LAB_IP> system
-``
+```
 SNMPv3 is preferable in real deployments and uses version-specific user/auth/privacy options. Do not guess community strings against arbitrary targets. Inventory data may be sensitive; keep output minimal.
 
 ## 4. LDAP
 ```bash
 ldapsearch -x -H ldap://<LAB_IP>:389 -s base -b '' namingContexts
 ldapsearch -x -H ldap://<LAB_IP>:389 -D '<LAB_BIND_DN>' -W -b '<LAB_BASE_DN>' '(objectClass=*)' dn
-``
+```
 - `-x`: simple authentication mode.
 - `-H`: server URI.
 - `-s base`: base-object query.
@@ -52,7 +52,7 @@ Use the base DN and account provided by the exercise. A broad search can expose 
 ## 5. RPC
 ```bash
 rpcclient -U <LAB_USER> <LAB_IP>
-``
+```
 At the interactive prompt use `help` to see supported commands, and stick to read-only operations required by the lab. Commands vary by Samba build.
 
 ## 6. Output logic and troubleshooting

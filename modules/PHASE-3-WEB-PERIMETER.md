@@ -1,6 +1,6 @@
-# Phase 3 Focus — Session, Perimeter & Web Application Practicals
+# Workflow Cluster — Session, Perimeter & Web Application Practicals
 
-This revision page covers the conceptual workflow for modules 11–15. Carry out hands-on checks only against the intentionally vulnerable app or service assigned in the course range.
+This is a **custom revision cluster**, not an official CEH Engage phase number. It covers the conceptual workflow for Modules 11–15. Carry out hands-on checks only against the intentionally vulnerable app or service assigned in the course range.
 
 ## Web request workflow
 1. Map the pages/routes and note whether login is required.

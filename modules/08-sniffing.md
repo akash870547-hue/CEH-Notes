@@ -1,46 +1,68 @@
-# Module 08: Sniffing
+# Module 08 — Sniffing
 
-## Exam focus
-Promiscuous mode, packet capture filters, ARP/DNS/DHCP visibility, TLS limitations, spoofing indicators and mitigations.
+## Exam objective
+Capture and analyze authorized network traffic, distinguish capture filters from display filters, interpret common protocols and explain why TLS limits payload visibility.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Identify capture interface
+```bash
+ip addr
+ip route
+tcpdump -D
+``
+Choose the interface attached to the course virtual network. Capturing on Wi-Fi/host interface instead of a lab VM interface is a common reason for empty results.
+
+## 2. tcpdump: bounded capture patterns
+```bash
+sudo tcpdump -i <INTERFACE> -nn -c 50
+sudo tcpdump -i <INTERFACE> -nn 'host <LAB_IP>' -c 100
+sudo tcpdump -i <INTERFACE> -nn 'port 53' -c 100
+sudo tcpdump -i <INTERFACE> -nn 'arp or icmp' -c 100
+sudo tcpdump -i <INTERFACE> -nn -w lab.pcap -c 200
+tcpdump -nn -r lab.pcap
+``
+- `-i`: interface; `-nn`: no name/service resolution; `-c`: packet cap; `-w/-r`: write/read capture.
+Capture only what is needed; pcaps can contain credentials/tokens and must be protected.
+
+## 3. Wireshark display filters
+- DNS: `dns`
+- ARP: `arp`
+- ICMP: `icmp`
+- Only lab IP: `ip.addr == <LAB_IP>`
+- HTTP requests: `http.request`
+- HTTP errors: `http.response.code >= 400`
+- TCP port: `tcp.port == 80`
+- SYN without ACK: `tcp.flags.syn == 1 && tcp.flags.ack == 0`
+- Retransmissions: `tcp.analysis.retransmission`
+
+Capture filters (BPF) apply before packets are recorded; display filters apply after capture. A valid display filter cannot bring back packets that were never captured.
+
+## 4. TShark command-line analysis
+```bash
+tshark -D
+tshark -r lab.pcap -Y 'dns'
+tshark -r lab.pcap -Y 'http.request' -T fields -e frame.time -e ip.src -e http.host -e http.request.uri
+``
+Field names and protocol dissection vary by version. Use `tshark -G fields` to check fields if a query fails.
+
+## 5. Protocol clues
+- **ARP:** resolves local IPv4-to-MAC mappings; unexpected changes need corroboration.
+- **DNS:** query type/name, response code and TTL help explain name resolution.
+- **TCP:** SYN/SYN-ACK/ACK is a common connection setup; resets/timeouts have multiple causes.
+- **DHCP:** lease/address assignment visibility in the local broadcast domain.
+- **HTTP:** request/response data may be readable if unencrypted.
+- **TLS/HTTPS:** most application payload is encrypted; certificate/SNI/handshake data may still be visible depending on version and configuration.
+
+## 6. Spoofing/MITM indicators and defenses
+Indicators: unusual ARP mapping changes, duplicate IP claims, unexpected gateway MAC, odd DNS responses or certificate warnings. No single clue proves an attack. Validate against known inventory/logs. Defenses include TLS validation, switch protections such as DHCP snooping/DAI where supported, segmented networks and monitoring.
+
+## 7. Troubleshooting
+- Empty capture: wrong interface, inactive test traffic, VM network mode or capture filter too narrow.
+- Names obscure output: use `-nn`.
+- Too much traffic: add host/port filter or capture count.
+- HTTPS body unreadable: expected without legitimate keys in a controlled lab.
+- Strange retransmission/reset: packet loss, filtering, server/client behavior and capture loss may look similar.
 
 ## Lab drill
-**Exercise:** Capture traffic from an authorized lab interface; filter DNS/HTTP/ARP and identify normal versus suspicious patterns.
+Capture a small approved sequence while making one DNS request and one HTTP request to the lab. Filter both protocols and annotate the timestamp, source/destination, query/request and response.
 
-**Tool families to recognize:** Wireshark, tcpdump, tshark, ip neigh
-
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
-
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
-
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
-
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
-
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+**Related:** [Packet-analysis tool guide](../tools/packet-analysis.md) · [Nmap](../tools/nmap.md)

@@ -65,4 +65,4 @@ Indicators: unusual ARP mapping changes, duplicate IP claims, unexpected gateway
 ## Lab drill
 Capture a small approved sequence while making one DNS request and one HTTP request to the lab. Filter both protocols and annotate the timestamp, source/destination, query/request and response.
 
-**Related:** [Packet-analysis tool guide](../tools/packet-analysis.md) · [Nmap](../tools/nmap.md)
+**Related:** [Packet-analysis tool guide](../tools/packet-analysis.md) · [tcpflow stream reconstruction](../tools/extra-practical-tools.md) · [Nmap](../tools/nmap.md)

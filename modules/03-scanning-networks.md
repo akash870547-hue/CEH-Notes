@@ -10,7 +10,7 @@ ip route
 ip neigh
 ping -c 3 <LAB_IP>
 nmap --version
-``
+```
 Ping failure does not prove the host is down: ICMP may be filtered, and the target may still answer on a permitted TCP/UDP service.
 
 ## 2. Nmap progression — broad to focused
@@ -20,7 +20,7 @@ nmap -sT -T3 <LAB_IP>
 nmap -p 22,80,443 <LAB_IP>
 nmap -sV -p 22,80,443 <LAB_IP>
 nmap -oA evidence/host-scan <LAB_IP>
-``
+```
 - `-sn`: host discovery without port scan.
 - `-sT`: TCP connect scan.
 - `-p`: select ports/ranges.
@@ -34,7 +34,7 @@ Advanced but still bounded:
 sudo nmap -sU -p 53,123,161 <LAB_IP>
 sudo nmap -O <LAB_IP>
 nmap --traceroute <LAB_IP>
-``
+```
 UDP results can be ambiguous and slower. OS detection is a guess based on network responses, not a guarantee.
 
 ## 3. Port-state interpretation
@@ -54,7 +54,7 @@ Nmap Scripting Engine adds targeted checks; script effects vary.
 nmap --script-help http-title
 nmap --script http-title -p 80,443 <LAB_IP>
 nmap --script ssl-cert -p 443 <LAB_IP>
-``
+```
 Read a script's purpose before use. Use scripts classified as safe/discovery only when the lab allows them; avoid indiscriminate `--script all` or vulnerability scripts without explicit authorization.
 
 ## 5. Practical evidence format

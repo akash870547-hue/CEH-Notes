@@ -8,7 +8,7 @@ Capture and analyze authorized network traffic, distinguish capture filters from
 ip addr
 ip route
 tcpdump -D
-``
+```
 Choose the interface attached to the course virtual network. Capturing on Wi-Fi/host interface instead of a lab VM interface is a common reason for empty results.
 
 ## 2. tcpdump: bounded capture patterns
@@ -19,7 +19,7 @@ sudo tcpdump -i <INTERFACE> -nn 'port 53' -c 100
 sudo tcpdump -i <INTERFACE> -nn 'arp or icmp' -c 100
 sudo tcpdump -i <INTERFACE> -nn -w lab.pcap -c 200
 tcpdump -nn -r lab.pcap
-``
+```
 - `-i`: interface; `-nn`: no name/service resolution; `-c`: packet cap; `-w/-r`: write/read capture.
 Capture only what is needed; pcaps can contain credentials/tokens and must be protected.
 
@@ -41,7 +41,7 @@ Capture filters (BPF) apply before packets are recorded; display filters apply a
 tshark -D
 tshark -r lab.pcap -Y 'dns'
 tshark -r lab.pcap -Y 'http.request' -T fields -e frame.time -e ip.src -e http.host -e http.request.uri
-``
+```
 Field names and protocol dissection vary by version. Use `tshark -G fields` to check fields if a query fails.
 
 ## 5. Protocol clues

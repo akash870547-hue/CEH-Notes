@@ -1,5 +1,8 @@
 # Module 18 — IoT and OT Hacking
 
+## Terminology note
+The current course outline expands this area to include operational technology (OT), while some official CEH v13 lab-catalog text uses the shorter label “IoT Hacking.” Follow the terminology and objective shown in your assigned lab.
+
 ## Exam objective
 Identify common IoT/OT exposures in an authorized simulation: assets, network services, weak/default configuration, firmware lifecycle, MQTT/CoAP, segmentation and safety requirements. OT testing may affect availability and safety.
 

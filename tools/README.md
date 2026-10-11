@@ -1,80 +1,84 @@
 # CEH v13 Practical Tools — Core Command Library
 
-This directory is a **core tool-by-tool reference from beginner to advanced usage**. It covers the recurring CLI/GUI workflows represented in these notes; it is not a claim that every tool ever mentioned across all CEH training editions is included. Always cross-check the tool inventory inside your current lab. Each guide gives syntax, key options, lab examples, output interpretation, troubleshooting, and a short practice task.
+This library covers the common CLI and GUI tool families associated with the 20-module CEH v13 curriculum. It is **not a claim that every tool in every EC-Council lab image is listed**. The lab ecosystem is large, and exact tools, versions and menus depend on your course/lab image. Check the inventory and instructions in your assigned lab.
 
-> **Scope rule:** Replace placeholders only with the IPs, domains, URLs, interfaces, test accounts and files provided by your authorized CEH Cyber Range or your own isolated lab. Do not run active tests against public/third-party systems without explicit written authorization. Run potentially disruptive or exploit-validation options only when the lab objective explicitly permits them.
+> **Scope rule:** Replace placeholders only with targets, URLs, interfaces, test accounts and files provided by your authorized CEH Cyber Range or isolated lab. Follow any lab-specific rate limits, credentials and cleanup steps.
 
-## Tool guides
-
-### Network discovery and enumeration
-- [Nmap: host discovery, ports, versions, scripts, output](nmap.md)
-- [Recon and DNS: whois, dig, host, nslookup, curl](recon-dns.md)
-- [OSINT: theHarvester, ExifTool, Shodan, Recon-ng, Maltego and metadata](recon-osint.md)
-- [Service enumeration: SMB, NetBIOS, SNMP, LDAP, RPC](network-enumeration.md)
-- [Protocol enumeration: DNS enum, NTP, SMTP, NFS, RPC and IKE](protocol-enumeration.md)
-- [General Linux / Windows CLI utilities](cli-utilities.md)
-- [hping3 and network diagnostics](hping3.md)
+## Network reconnaissance and host discovery
+- [Nmap: basic through advanced scans, port states, output formats and NSE](nmap.md)
+- [Recon and DNS: WHOIS, dig, host, nslookup and curl](recon-dns.md)
+- [OSINT and metadata: theHarvester, ExifTool, Shodan, Recon-ng, Maltego, FOCA/Metagoofil](recon-osint.md)
 - [Local host discovery: arp-scan and Netdiscover](host-discovery.md)
-- [Netcat / Ncat and basic socket diagnostics](netcat-ncat.md)
+- [hping3 packet-level diagnostics](hping3.md)
+- [Netcat/Ncat socket diagnostics](netcat-ncat.md)
+- [General Linux/Windows CLI utilities](cli-utilities.md)
 
-### Web and application testing
-- [curl, WhatWeb, Nikto, Gobuster, ffuf, testssl.sh](web-cli-tools.md)
-- [Web content discovery: DIRB, Dirsearch, WPScan, Wfuzz, Wappalyzer](web-content-discovery.md)
-- [Burp Suite and OWASP ZAP workflows](burp-zap.md)
-- [sqlmap, from safe detection to controlled validation](sqlmap.md)
-- [GUI web scanners: Acunetix / IBM AppScan workflow](gui-web-scanners.md)
+## Enumeration and network protocols
+- [Service enumeration: SMB, NetBIOS, SNMP, LDAP and RPC](network-enumeration.md)
+- [Protocol enumeration: DNS enum, NTP, SMTP, NFS, RPC and IKE/IPsec](protocol-enumeration.md)
 
-### Vulnerability and exploitation frameworks
-- [Nessus / Greenbone (OpenVAS) scanning workflow](vulnerability-scanners.md)
+## Web server and application testing
+- [curl, WhatWeb, Nikto, Gobuster, ffuf and testssl.sh](web-cli-tools.md)
+- [DIRB, Dirsearch, WPScan, Wfuzz and Wappalyzer](web-content-discovery.md)
+- [Burp Suite and OWASP ZAP](burp-zap.md)
+- [SQLmap: controlled SQL injection validation](sqlmap.md)
+- [GUI web scanners: Acunetix and IBM AppScan](gui-web-scanners.md)
+
+## Vulnerability research and frameworks
+- [Nessus and Greenbone/OpenVAS workflow](vulnerability-scanners.md)
 - [Nuclei template scanner](nuclei.md)
 - [SearchSploit exploit-reference search](searchsploit.md)
-- [Nuclei template scanner](nuclei.md)
-- [SearchSploit exploit-reference search](searchsploit.md)
-- [Metasploit Framework: console, modules, options and validation](metasploit.md)
+- [Metasploit Framework: console, modules and validation](metasploit.md)
+- [Msfvenom: safe orientation and lab handling](msfvenom-reference.md)
 
-### Traffic, wireless and system analysis
+## Packet analysis, firewall and wireless
 - [Wireshark, tcpdump and tshark](packet-analysis.md)
-- [Wireless tools: iw, airodump-ng and capture review](wireless-tools.md)
-- [Linux / Windows system inspection, hashes and offline password-audit basics](system-and-password-audit.md)
-- [Credential auditing: Hydra plus offline John/Hashcat workflows](credential-auditing.md)
-- [Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk](steganography.md)
-- [Malware triage: YARA, Sysinternals, PEStudio and sandboxing](malware-analysis.md)
-- [Social Engineering Toolkit: consent-based awareness](social-engineering-tools.md)
-- [Msfvenom tool orientation and safe lab handling](msfvenom-reference.md)
-- [Firewall, IDS and IPS: Snort, Suricata, UFW, nftables](firewall-ids.md)
-- [Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk](steganography.md)
-- [Bettercap: safe lab reconnaissance and traffic visibility](bettercap.md)
+- [Bettercap: safe lab host discovery and traffic visibility](bettercap.md)
+- [Firewall/IDS/IPS: Snort, Suricata, UFW, nftables and iptables](firewall-ids.md)
+- [Wireless tools: iw, airodump-ng and supplied-capture analysis](wireless-tools.md)
 
-### Mobile, cloud, containers and cryptography
-- [Android: ADB, JADX, apkanalyzer and MobSF](mobile-tools.md)
-- [Cloud CLI and container image scanning with Grype](cloud-and-grype.md)
-- [OpenSSL, certificates, hashes and crypto checks](crypto-openssl.md)
-- [Log analysis: journalctl, grep, Get-WinEvent](log-analysis.md)
+## System, password, malware and social engineering
+- [Linux/Windows system inspection, hashes and offline audit basics](system-and-password-audit.md)
+- [Credential auditing: Hydra in tightly scoped labs, John and Hashcat offline](credential-auditing.md)
+- [Malware triage: YARA, Sysinternals, PEStudio and safe sandboxing](malware-analysis.md)
+- [Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk](steganography.md)
+- [Social Engineering Toolkit: consent-based awareness simulation](social-engineering-tools.md)
+- [Log analysis: journalctl, grep and Get-WinEvent](log-analysis.md)
+
+## Mobile, IoT, cloud and cryptography
+- [Android: ADB, apkanalyzer, APKTool, JADX and MobSF](mobile-tools.md)
+- [Cloud CLI, AWS, Docker, Grype, Trivy and read-only Kubernetes checks](cloud-and-grype.md)
+- [OpenSSL, TLS certificates, hashes and crypto checks](crypto-openssl.md)
+
+## Scenario recipes
 - [Objective-based practical command recipes](practical-command-recipes.md)
+- [Module-to-tool matrix](../TOOLS-MODULE-MATRIX.md)
 
-## How to learn each tool
-1. Read the **purpose and prerequisites**.
-2. Run the basic environment/version check first.
-3. Copy the basic command with the right lab placeholder.
-4. Read the output explanation, then move to intermediate/advanced options.
-5. Save evidence and verify the result instead of guessing.
+## How to use each guide
+1. **Beginner:** check version/help, verify target/account/interface, run one basic command and interpret all fields.
+2. **Intermediate:** narrow host/port/path, save output, compare a baseline and cross-check with a second source.
+3. **Advanced:** choose only task-relevant options, understand side effects, validate applicability, preserve evidence and document remediation/re-test.
 
-## Command conventions
-- `<LAB_IP>`: exact lab target IP.
-- `<LAB_SUBNET>`: assigned lab subnet in CIDR notation.
-- `<LAB_DOMAIN>`: assigned lab hostname/domain.
-- `<LAB_URL>`: fully qualified app URL.
-- `<INTERFACE>`: lab interface such as `eth0` (verify with `ip addr`).
-- `<LAB_FILE>`: course-provided sample/capture.
-- `<LAB_USER>`: designated lab account.
+"Advanced" does not mean adding stealth, persistence, credential theft or uncontrolled traffic. Some topics are GUI-first; their guides describe the workflow instead of inventing CLI flags.
 
-Angle-bracket placeholders are explanatory; replace them before executing commands. Commands may vary by OS and software version.
+## Placeholder dictionary
+- `<LAB_IP>`: target IP explicitly assigned by the lab.
+- `<LAB_SUBNET>`: exact in-scope subnet/CIDR.
+- `<LAB_DOMAIN>`: authorized hostname/domain.
+- `<LAB_URL>`: authorized application URL.
+- `<INTERFACE>`: verified lab interface.
+- `<LAB_FILE>`: supplied file, packet capture, APK or firmware.
+- `<LAB_USER>`: lab-provided test identity.
+- `<LAB_WORDLIST>`: small, course-supplied wordlist.
 
-## Official references
-- [CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
+Placeholders are explanatory. Replace them before execution. Commands and flags can vary across OS/tool versions; check the installed help/man page.
+
+## Authoritative / primary references
+- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
 - [Official CEH v13 Labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-- [Nmap reference guide](https://nmap.org/book/man.html)
-- [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/)
+- [Nmap Reference Guide](https://nmap.org/book/man.html)
+- [Wireshark documentation](https://www.wireshark.org/docs/)
 - [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
 - [OWASP ZAP documentation](https://www.zaproxy.org/docs/)
 - [Metasploit documentation](https://docs.metasploit.com/)
+- [Android Debug Bridge](https://developer.android.com/tools/adb)

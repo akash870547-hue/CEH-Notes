@@ -9,7 +9,7 @@ aws sts get-caller-identity --profile <LAB_PROFILE>
 docker version
 grype version
 grype --help
-``
+```
 Do not proceed if the returned account/role is not the lab account. Prefer a named profile over an implicit default credential chain.
 
 ## 2. AWS read-only inventory examples (sandbox only)
@@ -18,7 +18,7 @@ aws ec2 describe-instances --profile <LAB_PROFILE> --region <LAB_REGION>
 aws ec2 describe-security-groups --profile <LAB_PROFILE> --region <LAB_REGION>
 aws s3api list-buckets --profile <LAB_PROFILE>
 aws iam get-account-summary --profile <LAB_PROFILE>
-``
+```
 These calls return account metadata and may reveal sensitive inventory. Use only when allowed by the exercise and save only task-relevant results. Command fields vary by API/version; check the provider CLI help.
 
 ## 3. IAM policy review
@@ -26,7 +26,7 @@ These calls return account metadata and may reveal sensitive inventory. Use only
 aws iam list-attached-user-policies --user-name <LAB_USER> --profile <LAB_PROFILE>
 aws iam list-user-policies --user-name <LAB_USER> --profile <LAB_PROFILE>
 aws iam get-user-policy --user-name <LAB_USER> --policy-name <LAB_POLICY> --profile <LAB_PROFILE>
-``
+```
 Only inspect the supplied lab identity. Flag excessive wildcard permissions, unused identities, and permissions broader than the task requires. Never create keys or modify policies unless a lab explicitly requires the change and defines rollback.
 
 ## 4. Docker image inspection
@@ -34,7 +34,7 @@ Only inspect the supplied lab identity. Flag excessive wildcard permissions, unu
 docker image ls
 docker image inspect <LAB_IMAGE>
 docker history <LAB_IMAGE>
-``
+```
 Container layers and history can expose accidentally embedded secrets. Do not publish outputs containing credentials.
 
 ## 5. Grype: image or package scan
@@ -44,7 +44,7 @@ grype <LAB_IMAGE> -o table
 grype <LAB_IMAGE> -o json > grype-report.json
 grype dir:<LAB_DIRECTORY>
 grype sbom:<LAB_SBOM_FILE>
-``
+```
 Exact source schemes/options vary by release; check `grype help`. Run only on a course-provided local image, directory or SBOM. JSON output can be large; keep it private if it includes internal package paths.
 
 ## 6. Read Grype findings

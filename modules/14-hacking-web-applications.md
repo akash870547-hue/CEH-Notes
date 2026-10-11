@@ -1,46 +1,69 @@
-# Module 14: Hacking Web Applications
+# Module 14 — Hacking Web Applications
 
-## Exam focus
-App mapping, authentication, access control, input validation, security headers, file upload risks and OWASP testing workflow.
+## Exam objective
+Use a repeatable web testing workflow to evaluate authentication, authorization, session management, input validation, file handling, errors and security configuration. Make one controlled change at a time and keep a minimal request/response pair.
 
-## Practical workflow
-1. Read the lab objective and identify the exact target and output required.
-2. Confirm the system/app is part of the assigned range and note relevant credentials or prerequisites.
-3. Review the tool/menu provided by the lab, then perform one focused, low-impact check.
-4. Read the complete output; record exact evidence and what it does or does not prove.
-5. Verify the result against the objective, submit the required value, and stop.
+## 1. Baseline and map the app
+1. Confirm exact lab origin and allowed paths.
+2. Browse normal features while recording requests in DevTools Network or Burp/ZAP.
+3. Identify login/logout, roles, object IDs, file uploads, forms and state-changing operations.
+4. Establish a baseline user/role and response before testing.
+5. Avoid state changes or account lockouts unless the lab explicitly requires them.
+
+## 2. HTTP inspection from terminal
+```bash
+curl -I <LAB_URL>
+curl -i <LAB_URL>
+curl -sS -o /dev/null -w '%{http_code}\n' <LAB_URL>
+``
+Inspect request method, path, parameters, Host, Origin/Referer when relevant, cookies, response code, redirects and content. Browser DevTools gives a better view of dynamic sessions.
+
+## 3. Main testing categories
+- **Authentication:** login, reset flow, MFA, account lockout and error differences.
+- **Authorization/access control:** whether a role may reach a resource/action; use only designated test roles and dummy records.
+- **Session management:** cookie flags, session rotation, expiry and logout invalidation.
+- **Input validation:** how unexpected/malformed input is handled. Change one field and compare a baseline.
+- **File upload:** extension/type/content checks, safe storage outside executable web root, size limits and access control.
+- **Security configuration:** debug mode, verbose errors, security headers and secrets exposure.
+- **Business logic:** sequence, quantity/price/state assumptions; use synthetic test transactions.
+- **Logging:** ensure the security-relevant event is logged without recording credentials/tokens.
+
+## 4. Burp/ZAP workflow
+1. Use the supplied lab browser/proxy and set scope to the assigned app.
+2. Capture baseline request.
+3. Send to Repeater/Requester for controlled comparison.
+4. Modify one parameter/header at a time, then compare response.
+5. Save request/response with cookies and tokens redacted.
+6. Describe the impact and defense; don't extract real user data.
+
+Intrusive active scans/fuzzers can change state and create traffic. Use only the profile and rate the lab approves.
+
+## 5. Response codes are clues, not full conclusions
+- 200: response returned; task may still have failed.
+- 302: redirect; inspect Location and session state.
+- 401: authentication required/failed in this context.
+- 403: forbidden in this request context.
+- 404: resource not found or intentionally hidden.
+- 500: server error; may be caused by malformed input but is not proof of a vulnerability.
+
+## 6. Security headers and cookies
+Inspect `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `Referrer-Policy`, framing protection and Set-Cookie attributes. Recommended header sets depend on application behavior; don't apply a header without testing compatibility. See [session security](11-session-hijacking.md).
+
+## 7. Evidence report
+```text
+Feature / endpoint:
+Test role and expected access:
+Baseline request/response:
+Single change made:
+Observed difference:
+Reproducible?:
+Impact on this app:
+Sensitive data avoided:
+Suggested fix:
+Retest result:
+```
 
 ## Lab drill
-**Exercise:** Use a local deliberately vulnerable app; test one parameter at a time, keep a request/response pair and confirm impact safely.
+Using a test account and dummy record, verify an access-control rule or cookie attribute. Record expected vs observed and identify one limitation in your test.
 
-**Tool families to recognize:** Burp Suite, OWASP ZAP, browser DevTools, curl
-
-## Evidence to capture
-- Target and scope from the lab instructions.
-- Tool name/version and the key command or UI setting.
-- The smallest relevant output, screenshot, request/response, hash or log entry.
-- One sentence on interpretation and one sentence on limitations.
-- Remediation/defensive takeaway.
-
-## Practical troubleshooting
-- Check lab connectivity, current target, tool availability and permissions before changing the approach.
-- If output is empty or ambiguous, distinguish a tool/configuration issue from a target-side control.
-- Check the supplied lab guide for expected interfaces, service names and tool versions.
-- Do not report a vulnerability based only on a tool banner or a generic scanner finding.
-
-## Defend it
-Describe at least one prevention/detection measure appropriate to this module. Prefer least privilege, secure configuration, patching, segmentation, monitoring and evidence-based validation where relevant.
-
-## Quick self-check
-1. What exact question does the lab objective ask you to answer?
-2. Which observation supports your conclusion?
-3. What can that observation not prove on its own?
-4. What would you record as evidence?
-5. What is one realistic defensive mitigation?
-
-## Further reference
-- [EC-Council CEH v13 course outline](https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/)
-- [Official CEH v13 labs](https://ec-council-international.myshopify.com/products/certified-ethical-hacker-ceh-version-13-labs)
-
----
-Back to the [repository index](../README.md) · [Exam workflow](../EXAM-WORKFLOW.md) · [Command cheat sheet](../TOOLS-CHEATSHEET.md)
+**Related:** [Burp/ZAP](../tools/burp-zap.md) · [Web CLI tools](../tools/web-cli-tools.md) · [SQL injection](15-sql-injection.md) · [Session security](11-session-hijacking.md)

@@ -8,6 +8,7 @@
 <div class="ceh-hero-actions">
 <a class="md-button md-button--primary" href="01-recon-scanning/">Explore field notes</a>
 <a class="md-button" href="existing-notes/">Browse the full library</a>
+<button class="md-button" type="button" data-ceh-copy-link aria-label="Copy page link">Copy page link</button>
 </div>
 </div>
 
@@ -25,7 +26,16 @@
 
 <p class="ceh-section-intro">Start with what the task gives you. Every module follows the same pattern: trigger → quick reference → command syntax → output interpretation → filters / parsing → troubleshooting.</p>
 
-<div class="grid cards" markdown>
+<div class="ceh-module-toolbar" role="search" aria-label="Filter CEH topic tracks">
+  <label for="ceh-module-search">Find a topic track</label>
+  <div class="ceh-module-filter-controls">
+    <input id="ceh-module-search" type="search" placeholder="Try Nmap, PCAP, SQL, hash, ADB..." autocomplete="off" aria-describedby="ceh-filter-status">
+    <button class="md-button" type="button" data-ceh-clear-search disabled>Clear</button>
+  </div>
+  <p id="ceh-filter-status" class="ceh-filter-status" role="status" aria-live="polite">6 tracks available</p>
+</div>
+
+<div class="grid cards ceh-track-grid" markdown>
 
 - :material-radar: **01 · Recon & Scanning**
 

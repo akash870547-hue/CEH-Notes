@@ -8,14 +8,15 @@
 <div class="ceh-hero-actions">
 <a class="md-button md-button--primary" href="01-recon-scanning/">Explore field notes</a>
 <a class="md-button" href="existing-notes/">Browse the full library</a>
+<button class="md-button" type="button" data-ceh-copy-link aria-label="Copy page link">Copy page link</button>
 </div>
 </div>
 
 <div class="ceh-metrics">
-  <div class="ceh-metric"><strong>05</strong><span>Focused topic tracks</span></div>
-  <div class="ceh-metric"><strong>20</strong><span>Existing CEH module notes</span></div>
-  <div class="ceh-metric"><strong>⌕</strong><span>Search commands and fields</span></div>
-  <div class="ceh-metric"><strong>24/7</strong><span>Local preview, dark mode, copy code</span></div>
+  <div class="ceh-metric"><strong>05</strong><span>Focused practical tracks</span></div>
+  <div class="ceh-metric"><strong>20</strong><span>CEH module guides</span></div>
+  <div class="ceh-metric"><strong>34</strong><span>Detailed tool guides</span></div>
+  <div class="ceh-metric"><strong>⌕</strong><span>Search tools, flags and evidence</span></div>
 </div>
 
 !!! warning "Use the assigned scope"
@@ -25,7 +26,16 @@
 
 <p class="ceh-section-intro">Start with what the task gives you. Every module follows the same pattern: trigger → quick reference → command syntax → output interpretation → filters / parsing → troubleshooting.</p>
 
-<div class="grid cards" markdown>
+<div class="ceh-module-toolbar" role="search" aria-label="Filter CEH topic tracks">
+  <label for="ceh-module-search">Find a topic track</label>
+  <div class="ceh-module-filter-controls">
+    <input id="ceh-module-search" type="search" placeholder="Try Nmap, PCAP, SQL, hash, ADB..." autocomplete="off" aria-describedby="ceh-filter-status">
+    <button class="md-button" type="button" data-ceh-clear-search disabled>Clear</button>
+  </div>
+  <p id="ceh-filter-status" class="ceh-filter-status" role="status" aria-live="polite">6 tracks available</p>
+</div>
+
+<div class="grid cards ceh-track-grid" markdown>
 
 - :material-radar: **01 · Recon & Scanning**
 
@@ -67,13 +77,21 @@
 
     [Open module →](05-system-mobile.md)
 
-- :material-bookshelf: **Full CEH library**
+- :material-bookshelf: **All 20 CEH modules**
 
     ---
 
-    Use the original 20 topic modules and individual tool guides when a task needs deeper syntax or background.
+    Browse the complete module-by-module library with workflows, tool families, evidence and self-checks.
 
-    [Open notes library →](existing-notes.md)
+    [Browse all modules →](module-library.md)
+
+- :material-console: **Detailed tool library**
+
+    ---
+
+    Open 34 dedicated guide pages for network discovery, OSINT, web testing, scanners, packet tools, system auditing, malware, mobile, cloud and crypto.
+
+    [Browse tool guides →](tool-library.md)
 
 </div>
 

@@ -8,6 +8,8 @@ docs_dir: docs
 site_dir: site
 extra_css:
   - assets/stylesheets/extra.css
+extra_javascript:
+  - assets/javascripts/extra.js
 use_directory_urls: true
 strict: true
 
@@ -89,15 +91,97 @@ nav:
   - Home: index.md
   - Field Manual:
       - Network:
-          - Reconnaissance & Scanning: 01-recon-scanning.md
-          - PCAP & Traffic Analysis: 02-pcap-traffic.md
-      - Web & Databases: 03-web-databases.md
-      - Hashes, Crypto & Stego: 04-hashes-crypto.md
-      - System & Mobile Artifacts: 05-system-mobile.md
-  - Notes Library: existing-notes.md
-  - Project:
-      - UI Design & Authoring: ui-guide.md
-      - Site Setup: site-setup.md
-      - Local Preview & Build: local-preview.md
-      - Branch & PR Workflow: branches-notes.md
-      - Validation Checklist: validation.md
+          - "Reconnaissance & Scanning": 01-recon-scanning.md
+          - "PCAP & Traffic Analysis": 02-pcap-traffic.md
+      - "Web & Databases": 03-web-databases.md
+      - "Hashes, Crypto & Stego": 04-hashes-crypto.md
+      - "System & Mobile Artifacts": 05-system-mobile.md
+  - "CEH Modules":
+      - "Module Directory": module-library.md
+      - "Foundations and Vulnerability Assessment":
+          - "01 · Introduction to Ethical Hacking": modules/01-introduction-to-ethical-hacking.md
+          - "02 · Footprinting and Reconnaissance": modules/02-footprinting-and-reconnaissance.md
+          - "03 · Scanning Networks": modules/03-scanning-networks.md
+          - "04 · Enumeration": modules/04-enumeration.md
+          - "05 · Vulnerability Analysis": modules/05-vulnerability-analysis.md
+      - "Gaining Access Concepts":
+          - "06 · System Hacking": modules/06-system-hacking.md
+          - "07 · Malware Threats": modules/07-malware-threats.md
+          - "08 · Sniffing": modules/08-sniffing.md
+          - "09 · Social Engineering": modules/09-social-engineering.md
+          - "10 · Denial of Service": modules/10-denial-of-service.md
+      - "Perimeter and Web Applications":
+          - "11 · Session Hijacking": modules/11-session-hijacking.md
+          - "12 · Evading IDS, Firewalls and Honeypots": modules/12-evading-ids-firewalls-and-honeypots.md
+          - "13 · Hacking Web Servers": modules/13-hacking-web-servers.md
+          - "14 · Hacking Web Applications": modules/14-hacking-web-applications.md
+          - "15 · SQL Injection": modules/15-sql-injection.md
+      - "Wireless, Mobile, IoT, Cloud and Crypto":
+          - "16 · Hacking Wireless Networks": modules/16-hacking-wireless-networks.md
+          - "17 · Hacking Mobile Platforms": modules/17-hacking-mobile-platforms.md
+          - "18 · IoT and OT Hacking": modules/18-iot-hacking.md
+          - "19 · Cloud Computing": modules/19-cloud-computing.md
+          - "20 · Cryptography": modules/20-cryptography.md
+      - "Integrated Workflows":
+          - "Recon → Scan → Enumeration": modules/PHASE-1-RECON-SCAN-ENUM.md
+          - "Session, Perimeter and Web Practicals": modules/PHASE-3-WEB-PERIMETER.md
+  - "Tool Library":
+      - "All Tool Guides": tool-library.md
+      - "Guide Index": tools/README.md
+      - "Network reconnaissance and host discovery":
+          - "Nmap: basic through advanced scans, port states, output formats and NSE": tools/nmap.md
+          - "Recon and DNS: WHOIS, dig, host, nslookup and curl": tools/recon-dns.md
+          - "OSINT and metadata: theHarvester, ExifTool, Shodan, Recon-ng, Maltego, FOCA/Metagoofil": tools/recon-osint.md
+          - "Local host discovery: arp-scan and Netdiscover": tools/host-discovery.md
+          - "hping3 packet-level diagnostics": tools/hping3.md
+          - "Netcat/Ncat socket diagnostics": tools/netcat-ncat.md
+          - "General Linux/Windows CLI utilities": tools/cli-utilities.md
+      - "Enumeration and network protocols":
+          - "Service enumeration: SMB, NetBIOS, SNMP, LDAP and RPC": tools/network-enumeration.md
+          - "Protocol enumeration: DNS enum, NTP, SMTP, NFS, RPC and IKE/IPsec": tools/protocol-enumeration.md
+      - "Web server and application testing":
+          - "curl, WhatWeb, Nikto, Gobuster, ffuf and testssl.sh": tools/web-cli-tools.md
+          - "DIRB, Dirsearch, WPScan, Wfuzz and Wappalyzer": tools/web-content-discovery.md
+          - "Burp Suite and OWASP ZAP": tools/burp-zap.md
+          - "SQLmap: controlled SQL injection validation": tools/sqlmap.md
+          - "GUI web scanners: Acunetix and IBM AppScan": tools/gui-web-scanners.md
+      - "Vulnerability research and frameworks":
+          - "Nessus and Greenbone/OpenVAS workflow": tools/vulnerability-scanners.md
+          - "Nuclei template scanner": tools/nuclei.md
+          - "SearchSploit exploit-reference search": tools/searchsploit.md
+          - "Metasploit Framework: console, modules and validation": tools/metasploit.md
+          - "Msfvenom: safe orientation and lab handling": tools/msfvenom-reference.md
+      - "Packet analysis, firewall and wireless":
+          - "Wireshark, tcpdump and tshark": tools/packet-analysis.md
+          - "Bettercap: safe lab host discovery and traffic visibility": tools/bettercap.md
+          - "Firewall/IDS/IPS: Snort, Suricata, UFW, nftables and iptables": tools/firewall-ids.md
+          - "Wireless tools: iw, airodump-ng and supplied-capture analysis": tools/wireless-tools.md
+      - "System, password, malware and social engineering":
+          - "Linux/Windows system inspection, hashes and offline audit basics": tools/system-and-password-audit.md
+          - "Credential auditing: Hydra in tightly scoped labs, John and Hashcat offline": tools/credential-auditing.md
+          - "Additional utilities: Hashid, Medusa, DiE, Stegdetect, VeraCrypt, tcpflow, SQLite3, Androguard": tools/extra-practical-tools.md
+          - "Malware triage: YARA, Sysinternals, PEStudio and safe sandboxing": tools/malware-analysis.md
+          - "Steganography/steganalysis: ExifTool, Steghide, strings and Binwalk": tools/steganography.md
+          - "Social Engineering Toolkit: consent-based awareness simulation": tools/social-engineering-tools.md
+          - "Log analysis: journalctl, grep and Get-WinEvent": tools/log-analysis.md
+      - "Mobile, IoT, cloud and cryptography":
+          - "Android: ADB, apkanalyzer, APKTool, JADX and MobSF": tools/mobile-tools.md
+          - "Cloud CLI, AWS, Docker, Grype, Trivy and read-only Kubernetes checks": tools/cloud-and-grype.md
+          - "OpenSSL, TLS certificates, hashes and crypto checks": tools/crypto-openssl.md
+      - "Scenario recipes":
+          - "Objective-based practical command recipes": tools/practical-command-recipes.md
+  - "Reference Desk":
+      - "Tool-to-Module Matrix": TOOLS-MODULE-MATRIX.md
+      - "Full Command Cheat Sheet": TOOLS-CHEATSHEET.md
+      - "Quick Tool Reference": TOOLS-QUICK-REFERENCE.md
+      - "Exam Workflow": EXAM-WORKFLOW.md
+      - "Revision Checklist": REVISION-CHECKLIST.md
+      - "Lab Notes Template": LAB-NOTES-TEMPLATE.md
+      - "Quality Audit": QUALITY-AUDIT.md
+  - "Complete Library": existing-notes.md
+  - "Project":
+      - "UI Design & Authoring": ui-guide.md
+      - "Site Setup": site-setup.md
+      - "Local Preview & Build": local-preview.md
+      - "Branch & PR Workflow": branches-notes.md
+      - "Validation Checklist": validation.md

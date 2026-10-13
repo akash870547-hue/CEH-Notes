@@ -1,3 +1,5 @@
+<p class="ceh-kicker">MODULE 03 · APPLICATION SECURITY</p>
+
 # Web Application and Databases
 
 > **Scope:** Use only the assigned app / test database. Enumerate the minimum data required by the objective. Do not treat a scanner's output as proof without checking request and response evidence.

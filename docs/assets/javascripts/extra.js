@@ -34,7 +34,7 @@
     if (!input || !grid || input.dataset.cehBound === "true") return;
     input.dataset.cehBound = "true";
 
-    const cards = Array.from(grid.querySelectorAll(":scope > li"));
+    const cards = Array.from(grid.querySelectorAll("li"));
     const update = () => {
       const query = input.value.trim().toLocaleLowerCase();
       let visible = 0;

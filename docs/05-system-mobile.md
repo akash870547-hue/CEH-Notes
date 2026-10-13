@@ -1,3 +1,5 @@
+<p class="ceh-kicker">MODULE 05 · HOST & MOBILE FORENSICS</p>
+
 # System and Mobile Artifacts
 
 > **Scope:** Run ADB queries only against the designated lab emulator / device and artifacts provided by the challenge. Contact records and logs may contain sensitive data; extract only the fields needed for the exercise.

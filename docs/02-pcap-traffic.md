@@ -1,3 +1,5 @@
+<p class="ceh-kicker">MODULE 02 · PACKET FORENSICS</p>
+
 # PCAP and Traffic Analysis
 
 > **Input:** Prefer the PCAP supplied by the task. Live capture is only for a network you are explicitly authorized to monitor. Filters narrow evidence; they do not independently prove malicious intent.

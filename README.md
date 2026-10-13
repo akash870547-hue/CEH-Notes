@@ -6,7 +6,7 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 
 ## Start here
 
-- [MkDocs Material documentation site](docs/index.md) - searchable website source with dark mode, tabbed examples, copyable code, and Pages deployment.
+- [MkDocs Material documentation site](https://akash870547-hue.github.io/CEH-Notes/) - searchable hosted documentation with dark mode, tabbed examples, copyable code, and Pages deployment. [Source index](docs/index.md).
 
 - [Consolidated Practical / Engage field manual](exam-practical/README.md) - five cross-domain runbooks for recon, PCAPs, web/database, crypto/stego, and mobile/system artifacts.
 

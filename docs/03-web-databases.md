@@ -2,6 +2,12 @@
 
 > **Scope:** Use only the assigned app / test database. Enumerate the minimum data required by the objective. Do not treat a scanner's output as proof without checking request and response evidence.
 
+!!! note "Fast lookup"
+    Capture the normal HTTP response first. Test only the assigned application and parameter, then enumerate only the table / columns needed by the task.
+
+??? tip "When SQLmap results are inconsistent"
+    Preserve the authorized lab request, cookies and CSRF token. Recheck the app session and compare normal versus test responses before changing options.
+
 ## Quick reference
 
 | Objective | Command / reference | Answer location |
@@ -149,6 +155,18 @@ The IDs above follow the WASC Threat Classification Reference Grid. The grid is 
 | HSTS missing on HTTP | Inspect HTTPS; browsers ignore HSTS received over HTTP |
 | No X-Frame-Options | Check CSP `frame-ancestors` before concluding the page is frameable |
 | 403 / 429 | Follow the lab's rate limits; do not broaden scope or bypass protections blindly |
+
+=== "Bash / Linux"
+    ```bash
+    curl -sS -D - -o /dev/null <TARGET_URL>
+    grep -Ei 'content-security-policy|strict-transport-security|x-frame-options|set-cookie' <HEADERS_FILE>
+    ```
+
+=== "Windows PowerShell"
+    ```powershell
+    curl.exe -sS -D - -o NUL <TARGET_URL>
+    Select-String -Path '<HEADERS_FILE>' -Pattern 'content-security-policy|strict-transport-security|x-frame-options|set-cookie'
+    ```
 
 ## References
 

@@ -7,6 +7,7 @@ Fast-lookup practice notes for an authorized CEH iLabs environment. This is not 
 - [Six-hour strategy](strategy.md)
 - [Paths and preflight](path-reference.md)
 - [Quick command reference](quick-reference.md)
+- [Scenario map](scenario-map.md)
 
 ## Scenario runbooks
 

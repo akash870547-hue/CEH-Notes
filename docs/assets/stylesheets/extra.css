@@ -52,8 +52,8 @@
 }
 
 .md-typeset {
-  font-size: 0.76rem;
-  line-height: 1.72;
+  font-size: 0.8rem;
+  line-height: 1.75;
 }
 
 .md-typeset h1 {
@@ -399,7 +399,7 @@
   border: 1px solid var(--ceh-card-border);
   border-radius: var(--ceh-radius-sm);
   overflow: hidden;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
 }
 
 .md-typeset table:not([class]) th {

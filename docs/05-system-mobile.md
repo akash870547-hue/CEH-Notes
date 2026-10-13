@@ -2,6 +2,12 @@
 
 > **Scope:** Run ADB queries only against the designated lab emulator / device and artifacts provided by the challenge. Contact records and logs may contain sensitive data; extract only the fields needed for the exercise.
 
+!!! note "Fast lookup"
+    Confirm the ADB serial and artifact path before collecting evidence. Use only the designated synthetic lab device and PML / APK files supplied for the exercise.
+
+??? tip "ADB / PhoneSploit caution"
+    PhoneSploit wrappers and menus differ by version. First inspect local help and device connectivity. Do not use features that access contacts, messages, camera, calls or files on real / third-party devices.
+
 ## Quick reference
 
 | Objective | Command | Answer location |
@@ -154,6 +160,34 @@ CRC32 is a ZIP integrity checksum, not a cryptographic integrity or authenticity
 | Search has huge output | Filter by process name, time, operation and relevant path; avoid treating normal events as bugs. |
 | ZIP CRC test fails | Record the affected entry. Verify source integrity before treating it as tampering. |
 | CRC differs but APK hash differs too | Confirm both artifacts are the intended copies; CRC32 can collide and is not a security hash. |
+
+### PhoneSploit preflight
+
+Use only the lab device / isolated emulator. Check the installed project help before choosing menu actions; do not assume every clone supports the same command-line flags.
+
+```bash
+python3 phonesploit.py --help
+adb devices -l
+adb -s <SERIAL> get-state
+```
+
+If the local project is menu-driven, launch its documented entry point and select only inventory / status operations permitted by the lab. Do not install an unverified fork during the timed task.
+
+=== "Linux / macOS"
+    ```bash
+    adb devices -l
+    adb -s <SERIAL> logcat -d -v threadtime > <LOG_FILE>
+    sha256sum <APK_FILE>
+    unzip -t <APK_FILE>
+    ```
+
+=== "Windows PowerShell"
+    ```powershell
+    adb devices -l
+    adb -s <SERIAL> logcat -d -v threadtime | Out-File -Encoding utf8 '<LOG_FILE>'
+    Get-FileHash -Algorithm SHA256 '<APK_FILE>'
+    tar -tf '<APK_FILE>' | Select-Object -First 30
+    ```
 
 ## References
 

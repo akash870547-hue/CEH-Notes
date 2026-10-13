@@ -166,21 +166,21 @@ Try precise terms such as `NetBIOSDomainName`, `smb2-security-mode`, `mqtt.topic
 ## Go deeper
 
 <div class="ceh-path">
-  <span class="ceh-path-icon">:material-book-open-variant:</span>
+  <span class="ceh-path-icon" aria-hidden="true">▤</span>
   <div class="ceh-path-content">
     <p><strong><a href="existing-notes/">Existing CEH modules and tools</a></strong></p>
     <p>Original 20 module notes, individual tool guides, quick references and cross-module workflows.</p>
   </div>
 </div>
 <div class="ceh-path">
-  <span class="ceh-path-icon">:material-monitor-eye:</span>
+  <span class="ceh-path-icon" aria-hidden="true">⌘</span>
   <div class="ceh-path-content">
     <p><strong><a href="local-preview/">Preview the site locally</a></strong></p>
     <p>Run MkDocs, check navigation and validate your changes before the pull request.</p>
   </div>
 </div>
 <div class="ceh-path">
-  <span class="ceh-path-icon">:material-source-branch:</span>
+  <span class="ceh-path-icon" aria-hidden="true">⑂</span>
   <div class="ceh-path-content">
     <p><strong><a href="branches-notes/">Branch and PR workflow</a></strong></p>
     <p>Keep the published site stable while adding pages on a feature branch.</p>

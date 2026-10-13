@@ -6,6 +6,17 @@ This library covers the common CLI and GUI tool families associated with the 20-
 
 > **Scope rule:** Replace placeholders only with targets, URLs, interfaces, test accounts and files provided by your authorized CEH Cyber Range or isolated lab. Follow any lab-specific rate limits, credentials and cleanup steps.
 
+<div class="ceh-module-toolbar ceh-tool-toolbar" role="search" aria-label="Filter detailed tool guides">
+  <label for="ceh-tool-search">Find a tool guide</label>
+  <div class="ceh-module-filter-controls">
+    <input id="ceh-tool-search" type="search" placeholder="Try Nmap, Wireshark, SQLmap, ADB, OpenSSL..." autocomplete="off" aria-describedby="ceh-tool-filter-status">
+    <button class="md-button" type="button" data-ceh-clear-tool-search disabled>Clear</button>
+  </div>
+  <p id="ceh-tool-filter-status" class="ceh-filter-status" role="status" aria-live="polite">34 tool guides available</p>
+</div>
+
+<div class="ceh-tool-directory" markdown="1">
+
 ## Network reconnaissance and host discovery
 - [Nmap: basic through advanced scans, port states, output formats and NSE](tools/nmap.md)
 - [Recon and DNS: WHOIS, dig, host, nslookup and curl](tools/recon-dns.md)
@@ -56,6 +67,8 @@ This library covers the common CLI and GUI tool families associated with the 20-
 ## Scenario recipes
 - [Objective-based practical command recipes](tools/practical-command-recipes.md)
 - [Module-to-tool matrix](TOOLS-MODULE-MATRIX.md)
+
+</div>
 
 ## How to use each guide
 1. **Beginner:** check version/help, verify target/account/interface, run one basic command and interpret all fields.

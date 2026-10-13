@@ -2,6 +2,12 @@
 
 > Analyze only challenge-provided files / volumes. Hashes verify identity; they do not decrypt data. Never place a container password directly in shell history or process arguments.
 
+!!! note "Fast lookup"
+    Identify the artifact and compute its baseline hash before extraction or mounting. Keep MD5 / SHA-256 file hashes separate from internal ZIP-entry CRC32 values.
+
+??? tip "When extraction or mounting fails"
+    Verify the file type, tool version, mount path and supplied lab key / passphrase. Do not put volume passwords directly in command-line arguments.
+
 ## Quick reference
 
 | Objective | Command | Answer location |
@@ -150,6 +156,21 @@ Regex only detects string shape. A 32-character hex string is not guaranteed MD5
 | Binwalk reports offsets but extraction fails | Inspect format and offset; signature detections can be false positives or truncated content. |
 | High entropy | Compare file type / compression and entropy of relevant regions before concluding encryption. |
 | Empty metadata | Metadata may be stripped; inspect file headers and embedded content instead. |
+
+=== "Bash / Linux"
+    ```bash
+    sha256sum <FILE>
+    md5sum <FILE>
+    file <ARTIFACT_FILE>
+    exiftool <ARTIFACT_FILE>
+    ```
+
+=== "Windows PowerShell"
+    ```powershell
+    Get-FileHash -Algorithm SHA256 '<FILE>'
+    Get-FileHash -Algorithm MD5 '<FILE>'
+    Get-Item '<ARTIFACT_FILE>' | Format-List Name,Length,CreationTime,LastWriteTime
+    ```
 
 ## References
 

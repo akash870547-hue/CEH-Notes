@@ -63,4 +63,4 @@ Use this as a quick confidence check, not as a substitute for practicing the exa
 5. Does a scanner's "critical" score equal business risk? **No**—include exposure, asset importance and impact.
 6. What is a safe response to unknown malware? **Hash and analyze in an isolated lab; do not run it on a personal machine.**
 
-**Deep study:** [Module index](README.md) · [Tool library](tools/README.md) · [Command recipes](tools/practical-command-recipes.md)
+**Deep study:** [Module index](module-library.md) · [Tool library](tool-library.md) · [Command recipes](tools/practical-command-recipes.md)

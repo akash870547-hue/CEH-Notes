@@ -8,12 +8,16 @@ CEH-Notes/
 │   └── workflows/
 │       └── deploy.yml          # Build + GitHub Pages deploy workflow
 ├── docs/
-│   ├── index.md                # Home, keyboard shortcuts, six-hour workflow
+│   ├── assets/
+│   │   └── stylesheets/
+│   │       └── extra.css       # Responsive cards, typography, tables, code
+│   ├── index.md                # Designed home, lookup cards, six-hour workflow
 │   ├── 01-recon-scanning.md    # Nmap, SMB, NetBIOS, SMTP / MSSQL
 │   ├── 02-pcap-traffic.md      # Wireshark / TShark, DoS, RPC, MQTT
 │   ├── 03-web-databases.md     # SQLmap, WASC, security headers
 │   ├── 04-hashes-crypto.md     # MD5 / SHA-256, VeraCrypt, Steghide, entropy
 │   ├── 05-system-mobile.md     # ADB, PhoneSploit preflight, PML, APK CRC32
+│   ├── ui-guide.md             # Page layout / writing standard
 │   ├── branches-notes.md       # Branch conventions and PR workflow
 │   ├── existing-notes.md       # Links to all existing CEH modules / tool guides
 │   ├── local-preview.md        # Install, serve and strict build

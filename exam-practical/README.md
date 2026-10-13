@@ -13,6 +13,11 @@ Fast lookup for the **authorized CEH iLabs / Engage practice environment**. Thes
 | 05 | ADB, logcat, contacts provider, Procmon PML/CSV, APK CRC32 | [05 - Mobile and System Artifacts](05-Mobile-System-Artifacts.md) |
 | Audit | Structure, validation and limitations | [Audit and Validation](AUDIT.md) |
 
+## Companion references
+
+- [Exam strategy](strategy.md)
+- [Lab paths and preflight](path-reference.md)
+
 ## Existing scenario runbooks
 
 The more granular scenario guides from the existing notes are useful for targeted revision. Use the consolidated modules above as the top-level field manual and retain existing module/tool references where relevant.

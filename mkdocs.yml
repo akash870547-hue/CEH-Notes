@@ -20,6 +20,10 @@ theme:
     text: Inter
     code: JetBrains Mono
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - content.action.edit
     - navigation.instant
     - navigation.sections
     - navigation.expand
@@ -36,7 +40,7 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: teal
       accent: cyan
       toggle:
         icon: material/weather-night
@@ -83,16 +87,16 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Practical Modules:
-      - Reconnaissance & Scanning: 01-recon-scanning.md
-      - PCAP & Traffic Analysis: 02-pcap-traffic.md
+  - Field Manual:
+      - Network:
+          - Reconnaissance & Scanning: 01-recon-scanning.md
+          - PCAP & Traffic Analysis: 02-pcap-traffic.md
       - Web & Databases: 03-web-databases.md
       - Hashes, Crypto & Stego: 04-hashes-crypto.md
       - System & Mobile Artifacts: 05-system-mobile.md
-  - Repository:
+  - Notes Library: existing-notes.md
+  - Project:
       - Site Setup: site-setup.md
-      - Branch Notes: branches-notes.md
-      - Existing Notes Library: existing-notes.md
-      - Local Preview: local-preview.md
-  - About:
-      - Audit & Validation: validation.md
+      - Local Preview & Build: local-preview.md
+      - Branch & PR Workflow: branches-notes.md
+      - Validation Checklist: validation.md

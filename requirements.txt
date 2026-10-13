@@ -1,0 +1,2 @@
+# MkDocs Material 9.7.7 is the current stable release used by this configuration.
+mkdocs-material==9.7.7

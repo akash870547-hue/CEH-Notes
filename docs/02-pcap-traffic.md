@@ -2,6 +2,12 @@
 
 > **Input:** Prefer the PCAP supplied by the task. Live capture is only for a network you are explicitly authorized to monitor. Filters narrow evidence; they do not independently prove malicious intent.
 
+!!! note "Fast lookup"
+    Start with capture metadata and protocol hierarchy before searching for individual fields. Record frame numbers and timestamps for the exact answer.
+
+??? tip "When a display filter fails"
+    Remove one condition at a time, confirm the protocol is present, and use the installed Wireshark field autocomplete. Payloads may be encrypted or absent from the capture window.
+
 ## Quick reference
 
 | Objective | Display filter / CLI | Evidence field |
@@ -139,6 +145,20 @@ strings -n 6 <EXPORTED_FILE> | head -n 100
 | Large capture / slow CLI | Filter with `-Y`, extract selected fields and limit printed output. |
 | Export Objects is empty | Check protocol dissection, TCP reassembly and whether transfer is complete. |
 | Invalid field name | Use local filter autocomplete / field reference for the installed version. |
+
+=== "Linux / macOS"
+    ```bash
+    capinfos <PCAP_FILE>
+    tshark -r <PCAP_FILE> -q -z io,phs
+    tshark -r <PCAP_FILE> -Y 'mqtt || dcerpc || arp'
+    ```
+
+=== "Windows PowerShell"
+    ```powershell
+    & 'C:\Program Files\Wireshark\capinfos.exe' '<PCAP_FILE>'
+    & 'C:\Program Files\Wireshark\tshark.exe' -r '<PCAP_FILE>' -q -z io,phs
+    & 'C:\Program Files\Wireshark\tshark.exe' -r '<PCAP_FILE>' -Y 'mqtt || dcerpc || arp'
+    ```
 
 ## References
 

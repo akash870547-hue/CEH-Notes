@@ -2,6 +2,12 @@
 
 > Scope: use only the assigned CEH iLabs / Engage target or subnet. Exact task wording overrides these examples.
 
+!!! note "Fast lookup"
+    Confirm the assigned CIDR / host before scanning. Replace every placeholder and capture output with `-oA` when results may need parsing.
+
+??? tip "When scans return nothing"
+    Verify the lab route and target address. Use `-Pn` only for a specifically assigned host when discovery probes are blocked; keep ports narrow.
+
 ## Quick reference
 
 | Objective | Command | Answer field |
@@ -111,6 +117,21 @@ curl -sS -D - -o /dev/null <TARGET_URL>
 | Domain not returned | Use `nmblookup -A` and `smb-os-discovery`; anonymous access can be disabled. |
 | OS unclear | Use service banners and task evidence; do not invent a precise build. |
 | Connection refused | Verify address/port; service may be stopped or bound to another interface. |
+
+=== "Linux / macOS"
+    ```bash
+    ip -brief address
+    ip route
+    command -v nmap nmblookup nbtscan
+    nmap -n -sn <TARGET_CIDR>
+    ```
+
+=== "Windows PowerShell"
+    ```powershell
+    Get-NetIPConfiguration
+    Test-NetConnection -ComputerName <TARGET_IP> -Port 445
+    Get-Command nmap -ErrorAction SilentlyContinue
+    ```
 
 ## References
 

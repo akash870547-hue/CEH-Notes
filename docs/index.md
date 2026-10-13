@@ -13,10 +13,10 @@
 </div>
 
 <div class="ceh-metrics">
-  <div class="ceh-metric"><strong>05</strong><span>Focused topic tracks</span></div>
-  <div class="ceh-metric"><strong>20</strong><span>Existing CEH module notes</span></div>
-  <div class="ceh-metric"><strong>⌕</strong><span>Search commands and fields</span></div>
-  <div class="ceh-metric"><strong>24/7</strong><span>Local preview, dark mode, copy code</span></div>
+  <div class="ceh-metric"><strong>05</strong><span>Focused practical tracks</span></div>
+  <div class="ceh-metric"><strong>20</strong><span>CEH module guides</span></div>
+  <div class="ceh-metric"><strong>34</strong><span>Detailed tool guides</span></div>
+  <div class="ceh-metric"><strong>⌕</strong><span>Search tools, flags and evidence</span></div>
 </div>
 
 !!! warning "Use the assigned scope"
@@ -77,13 +77,21 @@
 
     [Open module →](05-system-mobile.md)
 
-- :material-bookshelf: **Full CEH library**
+- :material-bookshelf: **All 20 CEH modules**
 
     ---
 
-    Use the original 20 topic modules and individual tool guides when a task needs deeper syntax or background.
+    Browse the complete module-by-module library with workflows, tool families, evidence and self-checks.
 
-    [Open notes library →](existing-notes.md)
+    [Browse all modules →](module-library.md)
+
+- :material-console: **Detailed tool library**
+
+    ---
+
+    Open 34 dedicated guide pages for network discovery, OSINT, web testing, scanners, packet tools, system auditing, malware, mobile, cloud and crypto.
+
+    [Browse tool guides →](tool-library.md)
 
 </div>
 

@@ -1,16 +1,33 @@
 # Site Validation Checklist
 
-- [ ] `mkdocs build --strict` completes without warnings.
-- [ ] Every navigation entry resolves to a file under docs/.
-- [ ] Material search finds command names, flags and artifact fields.
-- [ ] Copy button works for shell and PowerShell examples.
-- [ ] Light / dark palette toggle works.
-- [ ] Tabs and collapsible admonitions render correctly.
-- [ ] Inline line numbers are visible and do not obscure the commands.
-- [ ] Long command tables and code blocks remain usable on mobile.
-- [ ] No credentials, access tokens, private PCAPs or real contact data are committed.
-- [ ] The GitHub Actions build passes on the pull request.
-- [ ] Repository Settings → Pages is set to GitHub Actions once.
-- [ ] A push to main completes the GitHub Pages deployment.
+## Build and navigation
 
-The configuration is based on the official MkDocs Material and GitHub Pages action documentation. It has not yet been built in the GitHub Actions runner or deployed from this branch.
+- [x] `mkdocs build --strict` passes in the current pull-request workflow.
+- [x] All pages listed in `mkdocs.yml` exist under `docs/`.
+- [x] Markdown code fences are balanced across the field guides.
+- [x] Internal Markdown links in the reviewed field-guide pages resolve.
+- [ ] Search finds commands, flags and artifact fields in the browser.
+- [ ] Edit links point to the intended source branch / file.
+
+## UI / UX review
+
+- [x] Landing page uses a clear hero, primary actions and topic cards.
+- [x] Sidebar is grouped into Field Manual, Notes Library and Project.
+- [x] Light / dark palettes are configured and share a teal accent.
+- [x] Responsive custom CSS styles cards, typography, tables, callouts and code blocks.
+- [x] Topic pages use a consistent label, fast-lookup table, callouts, tabs and troubleshooting.
+- [ ] Verify card layout and horizontal scrolling on a narrow mobile viewport.
+- [ ] Verify palette toggle, search keyboard navigation and code copy in a browser.
+- [ ] Review long command blocks for line wrap / horizontal scroll on mobile.
+
+## Deployment
+
+- [x] Pull-request workflow builds without deploying the draft.
+- [ ] Merge the PR into `main`.
+- [ ] Confirm **Settings → Pages → Source** is set to **GitHub Actions**.
+- [ ] Confirm the post-merge deploy job completes.
+- [ ] Open the published Pages URL and test a few routes, search terms and theme toggle.
+
+## Limits
+
+The latest CI build proves that MkDocs config, Markdown processing and navigation compile cleanly. It does not replace visual testing in an actual desktop / mobile browser, and it does not prove that the site is already publicly deployed. Tool commands are reference examples and have not been executed in the user's CEH iLabs image.

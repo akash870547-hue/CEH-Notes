@@ -24,7 +24,7 @@ The working branch for this documentation site is `feature/ceh-practical-archite
     # Validate, stage, commit and publish
     mkdocs build --strict
     git diff --check
-    git add mkdocs.yml requirements.txt docs/ .github/workflows/deploy.yml
+    git add mkdocs.yml requirements.txt docs/ .github/workflows/deploy.yml .gitignore
     git commit -m "Add MkDocs CEH field manual"
     git push -u origin HEAD
 

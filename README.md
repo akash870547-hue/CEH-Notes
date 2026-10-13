@@ -6,6 +6,8 @@ Module-wise practical revision notes for **Certified Ethical Hacker (CEH) v13**.
 
 ## Start here
 
+- [CEH Practical field manual](exam-practical/README.md) - 20 modular runbooks, tool syntax, answer extraction, and troubleshooting for authorized iLabs practice.
+
 - [Exam workflow](EXAM-WORKFLOW.md) — repeatable approach for scenario / flag-based objectives.
 - [Core tool-by-tool command library](tools/README.md) — detailed beginner-to-advanced guides for network, OSINT, enumeration, web, vulnerability scanners, system, malware, wireless, mobile, cloud and crypto tools.
 - [Module-to-tool matrix](TOOLS-MODULE-MATRIX.md) — maps practical tool families and command guides to each of the 20 CEH modules.

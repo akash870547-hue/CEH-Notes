@@ -96,6 +96,7 @@ nav:
       - System & Mobile Artifacts: 05-system-mobile.md
   - Notes Library: existing-notes.md
   - Project:
+      - UI Design & Authoring: ui-guide.md
       - Site Setup: site-setup.md
       - Local Preview & Build: local-preview.md
       - Branch & PR Workflow: branches-notes.md

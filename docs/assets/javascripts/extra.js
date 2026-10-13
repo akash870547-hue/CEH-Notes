@@ -67,6 +67,54 @@
     update();
   };
 
+  const initToolFilter = () => {
+    const input = document.querySelector("#ceh-tool-search");
+    const directory = document.querySelector(".ceh-tool-directory");
+    const status = document.querySelector("#ceh-tool-filter-status");
+    const clear = document.querySelector("[data-ceh-clear-tool-search]");
+
+    if (!input || !directory || input.dataset.cehBound === "true") return;
+    input.dataset.cehBound = "true";
+
+    const items = Array.from(directory.querySelectorAll("li"));
+    const isGuide = (item) => Array.from(item.querySelectorAll("a")).some((link) =>
+      (link.getAttribute("href") || "").includes("tools/")
+    );
+    const guides = items.filter(isGuide);
+
+    const update = () => {
+      const query = input.value.trim().toLocaleLowerCase();
+      let visible = 0;
+
+      items.forEach((item) => {
+        if (!isGuide(item)) {
+          item.hidden = Boolean(query);
+          return;
+        }
+
+        const haystack = item.textContent.toLocaleLowerCase();
+        const matches = !query || haystack.includes(query);
+        item.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      if (status) {
+        status.textContent = query
+          ? `${visible} of ${guides.length} tool guides shown`
+          : `${guides.length} tool guides available`;
+      }
+      if (clear) clear.disabled = input.value.length === 0;
+    };
+
+    input.addEventListener("input", update);
+    clear?.addEventListener("click", () => {
+      input.value = "";
+      update();
+      input.focus();
+    });
+    update();
+  };
+
   const copyText = async (value) => {
     if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(value);
@@ -115,6 +163,7 @@
   const init = () => {
     ensureReadingProgress();
     initModuleFilter();
+    initToolFilter();
     initCopyLink();
     updateReadingProgress();
   };

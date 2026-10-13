@@ -27,7 +27,7 @@ find /usr/share/nmap/scripts -maxdepth 1 -type f -name '*.nse' 2>/dev/null | hea
 | Desktop artifacts | `$HOME/Desktop/` or `/home/kali/Desktop/` | User profile may differ. |
 | Downloads | `$HOME/Downloads/` | Check exact spelling/case. |
 | Kali wordlists | `/usr/share/wordlists/` | RockYou may exist only as `.txt.gz`, or not be installed. |
-| SecLists | `/usr/share/seclists/` | Optional package; do not assume installed. |
+| SecLists | `/usr/share/seclists/` | Optional package; do not assume installed. |\n| Common credentials | `/usr/share/seclists/Passwords/Common-Credentials/` | Verify subfolders / filenames exist before choosing a list. |
 | Nmap scripts | `/usr/share/nmap/scripts/` | Package and OS can change the path. |
 | Windows Desktop | `%USERPROFILE%\Desktop\` | Check the active account and path. |
 

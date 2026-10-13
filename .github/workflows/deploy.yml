@@ -33,6 +33,9 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
 
+      - name: Validate custom JavaScript
+        run: node --check docs/assets/javascripts/extra.js
+
       - name: Validate and build site
         run: mkdocs build --strict
 

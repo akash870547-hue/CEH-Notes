@@ -76,7 +76,7 @@ Every field guide should follow this order:
 
 ## References
 
-- [Primary tool documentation](<URL>)
+- Primary tool documentation: `<PRIMARY_DOCS_URL>`
 ```
 
 ## Components used by this site

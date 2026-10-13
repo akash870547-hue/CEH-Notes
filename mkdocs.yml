@@ -1,0 +1,103 @@
+site_name: CEH Practical Field Manual
+site_description: Searchable CEH Practical and CEHv13 Engage revision notes, commands, artifact analysis, and lab workflows.
+site_url: https://akash870547-hue.github.io/CEH-Notes/
+repo_name: akash870547-hue/CEH-Notes
+repo_url: https://github.com/akash870547-hue/CEH-Notes
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+extra_css:
+  - assets/stylesheets/extra.css
+use_directory_urls: true
+strict: true
+
+theme:
+  name: material
+  language: en
+  icon:
+    logo: material/shield-check
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - content.action.edit
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+# Material's built-in search indexes page headings and content client-side.
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\u200b\-_,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      linenums: true
+      linenums_style: pymdownx-inline
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Field Manual:
+      - Network:
+          - Reconnaissance & Scanning: 01-recon-scanning.md
+          - PCAP & Traffic Analysis: 02-pcap-traffic.md
+      - Web & Databases: 03-web-databases.md
+      - Hashes, Crypto & Stego: 04-hashes-crypto.md
+      - System & Mobile Artifacts: 05-system-mobile.md
+  - Notes Library: existing-notes.md
+  - Project:
+      - UI Design & Authoring: ui-guide.md
+      - Site Setup: site-setup.md
+      - Local Preview & Build: local-preview.md
+      - Branch & PR Workflow: branches-notes.md
+      - Validation Checklist: validation.md

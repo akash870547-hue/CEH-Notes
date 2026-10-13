@@ -587,3 +587,17 @@
     transition: none;
   }
 }
+
+
+.ceh-tool-toolbar {
+  margin-top: 1.1rem;
+}
+
+.ceh-tool-directory li[hidden] {
+  display: none !important;
+}
+
+.ceh-tool-directory ul {
+  padding-left: 1.2rem;
+}
+

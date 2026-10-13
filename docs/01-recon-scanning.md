@@ -1,3 +1,5 @@
+<p class="ceh-kicker">MODULE 01 · NETWORK INTELLIGENCE</p>
+
 # Reconnaissance and Scanning
 
 > Scope: use only the assigned CEH iLabs / Engage target or subnet. Exact task wording overrides these examples.

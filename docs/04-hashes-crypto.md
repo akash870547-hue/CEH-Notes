@@ -1,3 +1,5 @@
+<p class="ceh-kicker">MODULE 04 · FILE FORENSICS</p>
+
 # Hashes, Crypto, Stego and Forensics
 
 > Analyze only challenge-provided files / volumes. Hashes verify identity; they do not decrypt data. Never place a container password directly in shell history or process arguments.

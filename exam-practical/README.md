@@ -11,7 +11,12 @@ Fast lookup for the **authorized CEH iLabs / Engage practice environment**. Thes
 | 03 | SQLmap, WASC classification, HTTP security headers | [03 - Web and Database](03-Web-Database.md) |
 | 04 | Batch hashes, VeraCrypt, Steghide, entropy, file triage | [04 - Crypto, Stego and Forensics](04-Crypto-Stego-Forensics.md) |
 | 05 | ADB, logcat, contacts provider, Procmon PML/CSV, APK CRC32 | [05 - Mobile and System Artifacts](05-Mobile-System-Artifacts.md) |
+| 06 | Final-night recap: network errors, port states, Wireshark filters, files, web/DB workflows and submission checks | [Exam-Eve Rapid Runbook](06-Exam-Eve-Rapid-Runbook.md) |
 | Audit | Structure, validation and limitations | [Audit and Validation](AUDIT.md) |
+
+## Last-minute priority
+
+If the exam is tomorrow, read [Exam-Eve Rapid Runbook](06-Exam-Eve-Rapid-Runbook.md) first, then review the existing runbook closest to the task type. Prioritize interpreting outputs and diagnosing errors over memorizing unverified flags.
 
 ## Companion references
 

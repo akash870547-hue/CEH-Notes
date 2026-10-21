@@ -96,6 +96,7 @@ nav:
       - "Web & Databases": 03-web-databases.md
       - "Hashes, Crypto & Stego": 04-hashes-crypto.md
       - "System & Mobile Artifacts": 05-system-mobile.md
+      - "Exam-Eve Rapid Runbook": ../exam-practical/06-Exam-Eve-Rapid-Runbook.md
   - "CEH Modules":
       - "Module Directory": module-library.md
       - "Foundations and Vulnerability Assessment":
@@ -176,6 +177,7 @@ nav:
       - "Quick Tool Reference": TOOLS-QUICK-REFERENCE.md
       - "Exam Workflow": EXAM-WORKFLOW.md
       - "Revision Checklist": REVISION-CHECKLIST.md
+      - "Exam-Eve Rapid Runbook": ../exam-practical/06-Exam-Eve-Rapid-Runbook.md
       - "Lab Notes Template": LAB-NOTES-TEMPLATE.md
       - "Quality Audit": QUALITY-AUDIT.md
   - "Complete Library": existing-notes.md
